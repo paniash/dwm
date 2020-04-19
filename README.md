@@ -1,5 +1,5 @@
 # paniash's build of st
-Ok so this is epic. I recently switched from bspwm to dwm and so far I'm loving it. As quoted in the suckless website:
+Ok so this is epic. I recently switched from bspwm to dwm and so far I'm loving it. As quoted on the suckless website:
 
 > dwm is an extremely fast, small, and dynamic window manager for X window system. 
 
@@ -48,11 +48,11 @@ Currently I have the following patches installed,
 * To implement moving individual windows along the stack manually.
 * To implement true fullscreen.
 
-## Please install `libxft-bgra`
+## Please install `libxft-bgra`!
 This build of dwm does not implement color emoji in the statusbar, so you must install [libxft-bgra](https://aur.archlinux.org/packages/libxft-bgra/) from the AUR, which fixes the color emoji rendering problem, otherwise dwm will crash upon trying to render one. Note that this is only a temporary solution (hopefully) and will get fixed upstream by the suckless guys.
 
 #### Note
 This is a suckless utility so any problem that you face will be upto you to fix it. This build is
 merely a guide for an easy and fast setup. Be sure to checkout the main
 [website](https://dwm.suckless.org) for a tutorial and
-patches to make it more customizable.
+patches to make dwm more customizable.
