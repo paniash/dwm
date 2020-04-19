@@ -1,4 +1,4 @@
-# paniash's build of st
+# paniash's build of dwm
 Ok so this is epic. I recently switched from bspwm to dwm and so far I'm loving it. As quoted on the suckless website:
 
 > dwm is an extremely fast, small, and dynamic window manager for X window system. 
