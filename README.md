@@ -44,6 +44,7 @@ Currently I have the following patches installed,
 * Scratchpad - implements a scratchpad for simple tasks (`super+shift+return`).
 * Pertag - maintain a layout per tag instead of per monitor (default)
 * Noborder - removes borders when a window is present in monocle mode or only one window present in view.
+* Tilegap - adds equal gaps between master, stack, windows and between window edge and screen (best gaps so far and less bloat than vanitygaps patch imo)
 
 ## Goals
 * To add gaps across all layouts (for aesthetics).
