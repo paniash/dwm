@@ -45,11 +45,12 @@ Currently I have the following patches installed,
 * Pertag - maintain a layout per tag instead of per monitor (default)
 * Noborder - removes borders when a window is present in monocle mode or only one window present in view.
 * Tilegap - adds equal gaps between master, stack, windows and between window edge and screen (best gaps so far and less bloat than vanitygaps patch imo)
+* Push_no_master - moves windows up/down the stack but doesn't push to master, use zoom() instead.
 
 ## Goals
-* To add gaps across all layouts (for aesthetics).
-* To implement moving individual windows along the stack manually.
-* To implement true fullscreen.
+* ~~To add gaps across all layouts (for aesthetics).~~
+* ~~To implement moving individual windows along the stack manually.~~ (The stacker patch is better tbh, but getting some issues when patching, will try to fix it).
+* ~~To implement true fullscreen.~~ (Just monocle and turn the bar off, why keep unneccessary bloat)
 
 ## Please install `libxft-bgra`!
 This build of dwm does not implement color emoji in the statusbar, so you must install [libxft-bgra](https://aur.archlinux.org/packages/libxft-bgra/) from the AUR, which fixes the color emoji rendering problem, otherwise dwm will crash upon trying to render one. Note that this is only a temporary solution (hopefully) and will get fixed upstream by the suckless guys.
