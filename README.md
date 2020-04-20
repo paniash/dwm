@@ -43,6 +43,7 @@ Currently I have the following patches installed,
 * Attachbelow - by default, a new window takes the position of the master. With this patch, any new window will take the bottom position of the current window in focus.
 * Scratchpad - implements a scratchpad for simple tasks (`super+shift+return`).
 * Pertag - maintain a layout per tag instead of per monitor (default)
+* Uselessgaps - adds gaps around windows and removes border when in monocle mode or only when 1 window is present.
 
 ## Goals
 * To add gaps across all layouts (for aesthetics).
