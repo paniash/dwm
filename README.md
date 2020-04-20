@@ -38,10 +38,11 @@ Please remove the `exec dwm` line if you're going to use the above script
 
 ### Patches
 Currently I have the following patches installed,
-* Systray - for a systray on the statusbar for applets
-* Fibonacci - includes the fibonacci and dwindle layouts (`super+shift+f/d` respectively)
+* Systray - for a systray on the statusbar for applets.
+* Fibonacci - includes the fibonacci and dwindle layouts (`super+shift+f/d` respectively).
 * Attachbelow - by default, a new window takes the position of the master. With this patch, any new window will take the bottom position of the current window in focus.
-* Scratchpad - implements a scratchpad for simple tasks (`super+shift+return`)
+* Scratchpad - implements a scratchpad for simple tasks (`super+shift+return`).
+* Noborder - draws no border when only one window is present (in view).
 
 ## Goals
 * To add gaps across all layouts (for aesthetics).
