@@ -39,12 +39,13 @@ Please remove the `exec dwm` line if you're going to use the above script
 ### Patches
 Currently I have the following patches installed,
 * Systray - for a systray on the statusbar for applets.
-* Actualfullscreen - allows windows to be actually fullscreen instead of going monocle and toggling off the statusbar (`super+shift+f`)
+* Actualfullscreen - allows windows to be actually fullscreen instead of going monocle and toggling off the statusbar (`super+shift+f`).
+* Fibonacci - layout that spawns new windows in a spiral/dwindle pattern (`super+shift+g/d`).
 * Attachbelow - by default, a new window takes the position of the master. With this patch, any new window will take the bottom position of the current window in focus.
 * Scratchpad - implements a scratchpad for simple tasks (`super+shift+return`).
-* Pertag - maintain a layout per tag instead of per monitor (default)
+* Pertag - maintain a layout per tag instead of per monitor (default).
 * Noborder - removes borders when a window is present in monocle mode or only one window present in view.
-* Tilegap - adds equal gaps between master, stack, windows and between window edge and screen (best gaps so far and less bloat than vanitygaps patch imo)
+* Tilegap - adds equal gaps between master, stack, windows and between window edge and screen (best gaps so far and less bloat than vanitygaps patch imo) and only works in tiled layout.
 * Push_no_master - moves windows up/down the stack but doesn't push to master, use zoom() instead.
 
 ## Goals
