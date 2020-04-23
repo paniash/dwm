@@ -54,7 +54,7 @@ Currently I have the following patches installed,
 ## Goals
 * ~~To add gaps across all layouts (for aesthetics).~~
 * ~~To implement moving individual windows along the stack manually.~~ (The stacker patch is better tbh, but getting some issues when patching, will try to fix it).
-* ~~To implement true fullscreen.~~ (Done in the actual fullscreen patch (`super+shift+f`)).
+* ~~To implement true fullscreen.~~ (Done in the actual fullscreen patch).
 
 ## Please install `libxft-bgra`!
 This build of dwm does not implement color emoji in the statusbar, so you must install [libxft-bgra](https://aur.archlinux.org/packages/libxft-bgra/) from the AUR, which fixes the color emoji rendering problem, otherwise dwm will crash upon trying to render one. Note that this is only a temporary solution (hopefully) and will get fixed upstream by the suckless guys.
