@@ -48,6 +48,8 @@ Currently I have the following patches installed,
 * Vanity gaps - adds inner, outer gaps that can be changed on the fly (but works only in tiled layout, better than tilegap layout).
 * Push_no_master - moves windows up/down the stack but doesn't push to master, use zoom() instead.
 * Three column - Layout with a centred master and 2 parts of the stack on each side (`super+shift+t`).
+* Gaplessgrid - Layout with gapless grid layout (super+shift+y).
+* Notitle - Removes the title section of windows from the statusbar (allows me to add more modules to dwmblocks).
 
 ## Goals
 * ~~To add gaps across all layouts (for aesthetics).~~
