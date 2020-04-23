@@ -50,6 +50,7 @@ Currently I have the following patches installed,
 * Three column - Layout with a centred master and 2 parts of the stack on each side (`super+shift+t`).
 * Gaplessgrid - Layout with gapless grid layout (super+shift+y).
 * Notitle - Removes the title section of windows from the statusbar (allows me to add more modules to dwmblocks).
+* Focusonactive - patch that for example when opening a url in one tag shifts focus to the tag where the browser is present.
 
 ## Goals
 * ~~To add gaps across all layouts (for aesthetics).~~
