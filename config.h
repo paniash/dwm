@@ -49,6 +49,7 @@ static const int attachbelow = 1;    /* 1 means attach after the currently activ
 
 #include "fibonacci.c"
 #include "tcl.c"
+#include "gaplessgrid.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
@@ -57,6 +58,7 @@ static const Layout layouts[] = {
  	{ "[@]",      spiral },
  	{ "[\\]",      dwindle },
  	{ "|||",      tcl },
+ 	{ "##",      gaplessgrid },
 };
 
 /* key definitions */
@@ -100,6 +102,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_g,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY|ShiftMask,             XK_d,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[5]} },
+	{ MODKEY|ShiftMask,             XK_y,      setlayout,      {.v = &layouts[6]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
