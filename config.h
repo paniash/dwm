@@ -15,6 +15,7 @@ static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrains Mono:size=12",
+					"IPAGothic:style=Regular",
 					"FontAwesome:style=Regular:size=11:antialias=true:autohint=true",
 					"MaterialIcons:style=Regular:size=13:antialias=true:autohint=true"
 };
@@ -27,11 +28,12 @@ static const char col_cyan[]        = "#005577";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, NULL },
-	[SchemeSel]  = { col_gray4, col_cyan,  "#9f9ea8"  },
+	[SchemeSel]  = { col_gray4, "#e0612a",  "#9f9ea8"  },
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+/* static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }; */
+static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -41,7 +43,6 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       1 << 7,            1,           -1 },
 	{ "Slack",     NULL,       NULL,       1 << 6,            0,           -1 },
-	{ "Brave browser",  NULL,       NULL,       1 << 0,       0,           -1 },
 };
 
 /* layout(s) */
