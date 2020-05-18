@@ -47,16 +47,11 @@ static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int attachbelow = 1;    /* 1 means attach after the currently active window */
 
-#include "fibonacci.c"
-#include "tcl.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
- 	{ "[@]",      spiral },
- 	{ "[\\]",      dwindle },
- 	{ "|||",      tcl },
 };
 
 /* key definitions */
@@ -97,9 +92,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY|ShiftMask,             XK_g,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY|ShiftMask,             XK_d,      setlayout,      {.v = &layouts[4]} },
-	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[5]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
@@ -152,4 +144,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-

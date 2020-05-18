@@ -1,7 +1,7 @@
-# paniash's build of dwm
+# Ashish's build of dwm
 Ok so this is epic. I recently switched from bspwm to dwm and so far I'm loving it. As quoted on the [suckless](https://dwm.suckless.org) website:
 
-> dwm is an extremely fast, small, and dynamic window manager for X window system. 
+> dwm is an extremely fast, small, and dynamic window manager for X window system.
 
 This repository contains my build files of dwm which I'll be updating as and when I patch the source code to my liking. If you're new to dwm, please refer to their official [website](https://dwm.suckless.org).
 
@@ -31,7 +31,7 @@ the following line (mentioned on the suckless website) in your `.xinitrc` which 
 
 while :; do
 	ssh-agent dwm || break
-done	
+done
 ```
 
 Please remove the `exec dwm` line if you're going to use the above script
@@ -40,15 +40,12 @@ Please remove the `exec dwm` line if you're going to use the above script
 Currently I have the following patches installed,
 * Systray - for a systray on the statusbar for applets.
 * Actualfullscreen - allows windows to be actually fullscreen instead of going monocle and toggling off the statusbar (`super+shift+f`).
-* Fibonacci - layout that spawns new windows in a spiral/dwindle pattern (`super+shift+g/d`).
 * Attachbelow - by default, a new window takes the position of the master. With this patch, any new window will take the bottom position of the current window in focus.
 * Scratchpad - implements a scratchpad for simple tasks (`super+shift+return`).
 * Pertag - maintain a layout per tag instead of per monitor (default).
 * Noborder - removes borders when a window is present in monocle mode or only one window present in view.
 * Vanity gaps - adds inner, outer gaps that can be changed on the fly (but works only in tiled layout, better than tilegap layout).
 * Push_no_master - moves windows up/down the stack but doesn't push to master, use zoom() instead.
-* Three column - Layout with a centred master and 2 parts of the stack on each side (`super+shift+t`).
-* Gaplessgrid - Layout with gapless grid layout (super+shift+y).
 * Notitle - Removes the title section of windows from the statusbar (allows me to add more modules to dwmblocks).
 * Focusonactive - patch that for example when opening a url in one tag shifts focus to the tag where the browser is present.
 
