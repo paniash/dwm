@@ -36,12 +36,14 @@ done
 
 Please remove the `exec dwm` line if you're going to use the above script
 
+Also, I'm using an external program for binding keys called `sxhkd`, whose config file you can find in my [dotfiles](https://github.com/paniash/dotfiles) repo. Hence, don't expect all the keybindings to work out of the box unless you install `sxhkd`. It is present in the Arch repos.
+
 ### Patches
 Currently I have the following patches installed,
 * Systray - for a systray on the statusbar for applets.
 * Actualfullscreen - allows windows to be actually fullscreen instead of going monocle and toggling off the statusbar (`super+shift+f`).
 * Attachbelow - by default, a new window takes the position of the master. With this patch, any new window will take the bottom position of the current window in focus.
-* Scratchpad - implements a scratchpad for simple tasks (`super+shift+return`).
+* Scratchpad - implements a scratchpad for simple tasks (`super+ctrl+return`).
 * Pertag - maintain a layout per tag instead of per monitor (default).
 * Noborder - removes borders when a window is present in monocle mode or only one window present in view.
 * Vanity gaps - adds inner, outer gaps that can be changed on the fly (but works only in tiled layout, better than tilegap layout).
