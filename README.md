@@ -41,10 +41,10 @@ Also, I'm using an external program for binding keys called `sxhkd`, whose confi
 ### Patches
 Currently I have the following patches installed,
 * Systray - for a systray on the statusbar for applets.
-* Actualfullscreen - allows windows to be actually fullscreen instead of going monocle and toggling off the statusbar (`super+shift+f`).
+* Actualfullscreen - allows windows to be actually fullscreen instead of going monocle and toggling off the statusbar (`super+f`).
 * Attachbelow - by default, a new window takes the position of the master. With this patch, any new window will take the bottom position of the current window in focus.
 * Scratchpad - implements a scratchpad for simple tasks (`super+ctrl+return`).
-* Pertag - maintain a layout per tag instead of per monitor (default).
+* Pertag - maintain a layout per tag instead of per monitor (which is the default).
 * Noborder - removes borders when a window is present in monocle mode or only one window present in view.
 * Vanity gaps - adds inner, outer gaps that can be changed on the fly (but works only in tiled layout, better than tilegap layout).
 * Push_no_master - moves windows up/down the stack but doesn't push to master, use zoom() instead.
@@ -52,9 +52,9 @@ Currently I have the following patches installed,
 * Focusonactive - patch that for example when opening a url in one tag shifts focus to the tag where the browser is present.
 
 ## Goals
-* ~~To add gaps across all layouts (for aesthetics).~~
-* ~~To implement moving individual windows along the stack manually.~~ (The stacker patch is better tbh, but getting some issues when patching, will try to fix it).
-* ~~To implement true fullscreen.~~ (Done in the actual fullscreen patch).
+* ~~To add gaps (for aesthetics).~~
+* ~~To implement moving individual windows along the stack manually.~~ Implemented in push_no_master patch.
+* ~~To implement true fullscreen.~~ Done in the actual fullscreen patch.
 
 ## Please install `libxft-bgra`!
 This build of dwm does not implement color emoji in the statusbar, so you must install [libxft-bgra](https://aur.archlinux.org/packages/libxft-bgra/) from the AUR, which fixes the color emoji rendering problem, otherwise dwm will crash upon trying to render one. Note that this is only a temporary solution (hopefully) and will get fixed upstream by the suckless guys.
