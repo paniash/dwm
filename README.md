@@ -42,7 +42,6 @@ Also, I'm using an external program for binding keys called `sxhkd`, whose confi
 Currently I have the following patches installed,
 * Systray - for a systray on the statusbar for applets.
 * Actualfullscreen - allows windows to be actually fullscreen instead of going monocle and toggling off the statusbar (`super+f`).
-* Attachbelow - by default, a new window takes the position of the master. With this patch, any new window will take the bottom position of the current window in focus.
 * Scratchpad - implements a scratchpad for simple tasks (`super+ctrl+return`).
 * Pertag - maintain a layout per tag instead of per monitor (which is the default).
 * Noborder - removes borders when a window is present in monocle mode or only one window present in view.
