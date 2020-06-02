@@ -34,9 +34,9 @@ while :; do
 done
 ```
 
-Please remove the `exec dwm` line if you're going to use the above script
+Please remove the `exec dwm` line if you're going to use the above script. 
+For keybindings, refer `config.h`.
 
-Also, I'm using an external program for binding keys called `sxhkd`, whose config file you can find in my [dotfiles](https://github.com/paniash/dotfiles) repo. Hence, don't expect all the keybindings to work out of the box unless you install `sxhkd`. It is present in the Arch repos.
 
 ### Patches
 Currently I have the following patches installed,
