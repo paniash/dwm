@@ -35,10 +35,10 @@ static const char *colors[][3]      = {
 
 /* tagging */
 /* static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }; */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6" };
+/* static const char *tags[] = { "1", "2", "3", "4", "5", "6" }; */
 /* static const char *tags[] = { "I", "II", "III", "IV", "V", "VI" }; */
 /* static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" }; */
-/* static const char *tags[] = { "一", "二", "三", "四", "五", "六" }; */
+static const char *tags[] = { "一", "二", "三", "四", "五", "六" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -121,8 +121,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.02} },
 	{ MODKEY,                       XK_space,  zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ControlMask,           XK_l,      shiftviewclients,     {.i = +1 } },
-	{ MODKEY|ControlMask,           XK_h,      shiftviewclients,     {.i = -1 } },
+	{ MODKEY,           			XK_period, shiftviewclients,     {.i = +1 } },
+	{ MODKEY,           			XK_comma,  shiftviewclients,     {.i = -1 } },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
