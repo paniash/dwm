@@ -224,6 +224,7 @@ static void pushup(const Arg *arg);
 static void quit(const Arg *arg);
 static Monitor *recttomon(int x, int y, int w, int h);
 static void removesystrayicon(Client *i);
+static void resetlayout(const Arg *arg);
 static void resize(Client *c, int x, int y, int w, int h, int interact);
 static void resizebarwin(Monitor *m);
 static void resizeclient(Client *c, int x, int y, int w, int h);
@@ -1497,6 +1498,15 @@ removesystrayicon(Client *i)
 	free(i);
 }
 
+void
+resetlayout(const Arg *arg)
+{
+		Arg default_layout = {.v = &layouts[0]};
+		Arg default_mfact = {.f = mfact + 1};
+
+		setlayout(&default_layout);
+		setmfact(&default_mfact);
+}
 
 void
 resize(Client *c, int x, int y, int w, int h, int interact)
@@ -1523,6 +1533,10 @@ resizeclient(Client *c, int x, int y, int w, int h)
 	c->oldw = c->w; c->w = wc.width = w;
 	c->oldh = c->h; c->h = wc.height = h;
 	wc.border_width = c->bw;
+
+	if ((nexttiled(c->mon->clients) == c) && !(nexttiled(c->next)))
+			resetlayout(NULL);
+
 	if (((nexttiled(c->mon->clients) == c && !nexttiled(c->next))
 	    || &monocle == c->mon->lt[c->mon->sellt]->arrange)
 	    && !c->isfullscreen && !c->isfloating) {
