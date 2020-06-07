@@ -49,7 +49,7 @@ Currently I have the following patches installed,
 * Push_no_master - moves windows up/down the stack but doesn't push to master, use zoom() instead.
 * Notitle - Removes the title section of windows from the statusbar (allows me to add more modules to dwmblocks).
 * Focusonactive - patch that for example when opening a url in one tag shifts focus to the tag where the browser is present.
-* Shiftviewclient - allows to move through tags that contain atleast 1 client.
+* Reset_layout - resets mfact on tag when only 1 client is present.
 
 ## Goals
 * ~~To add gaps (for aesthetics).~~
