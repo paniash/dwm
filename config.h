@@ -97,17 +97,18 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("buku-dmenu") },
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("st -e ncmpcpp") },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("st -e ytop") },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("slack") },
 	{ MODKEY|ShiftMask,             XK_Escape, spawn,          SHCMD("shutdown.sh") },
 
 	// Media keys
-	{ 0,                       XF86XK_AudioMute,      spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+10 dwmblocks") },
+	{ 0,                       XF86XK_AudioMute,             spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+10 dwmblocks") },
 	{ 0,                       XF86XK_AudioRaiseVolume,      spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%; pkill -RTMIN+10 dwmblocks") },
 	{ 0,                       XF86XK_AudioLowerVolume,      spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%; pkill -RTMIN+10 dwmblocks") },
-	{ 0,                       XF86XK_AudioPlay,      spawn,          SHCMD("mpc toggle; pkill -RTMIN+11 dwmblocks") },
-	{ 0,                       XF86XK_AudioNext,      spawn,          SHCMD("mpc next; pkill -RTMIN+11 dwmblocks") },
-	{ 0,                       XF86XK_AudioPrev,      spawn,          SHCMD("mpc prev; pkill -RTMIN+11 dwmblocks") },
-	{ 0,                       XF86XK_MonBrightnessUp,      spawn,          SHCMD("xbacklight -inc 5; pkill -RTMIN+9 dwmblocks") },
-	{ 0,                       XF86XK_MonBrightnessDown,      spawn,          SHCMD("xbacklight -dec 5; pkill -RTMIN+9 dwmblocks") },
+	{ 0,                       XF86XK_AudioPlay,      		 spawn,          SHCMD("mpc toggle; pkill -RTMIN+11 dwmblocks") },
+	{ 0,                       XF86XK_AudioNext,     		 spawn,          SHCMD("mpc next; pkill -RTMIN+11 dwmblocks") },
+	{ 0,                       XF86XK_AudioPrev,     		 spawn,          SHCMD("mpc prev; pkill -RTMIN+11 dwmblocks") },
+	{ 0,                       XF86XK_MonBrightnessUp,       spawn,          SHCMD("xbacklight -inc 5; pkill -RTMIN+9 dwmblocks") },
+	{ 0,                       XF86XK_MonBrightnessDown,     spawn,          SHCMD("xbacklight -dec 5; pkill -RTMIN+9 dwmblocks") },
 
 	
 	/* { MODKEY,                       XK_y,      togglebar,      {0} }, */
