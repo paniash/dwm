@@ -49,6 +49,7 @@ static const Rule rules[] = {
 	{ "Gimp",     NULL,       NULL,       1 << 4,            1,           -1 },
 	{ "Slack",     NULL,       NULL,       1 << 5,            0,           -1 },
 	{ "Matplotlib",     NULL,       NULL,       0,            1,           -1 },
+	{ "R_x11",     NULL,       NULL,       0,            1,           -1 },
 };
 
 /* layout(s) */
