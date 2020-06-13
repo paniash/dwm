@@ -33,6 +33,20 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan2,  col_gray5 },
 };
 
+typedef struct {
+	const char *name;
+	const void *cmd;
+} Sp;
+const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34+120-40", NULL };
+const char *spcmd2[] = {"st", "-n", "spcalc", "-g", "50x20", "-e", "bc", "-lq", NULL };
+const char *spcmd3[] = {"st", "-n", "spmusic", "-g", "120x34", "-e", "ncmpcpp", NULL };
+static Sp scratchpads[] = {
+	/* name          cmd  */
+	{"spterm",      spcmd1},
+	{"spcalc",      spcmd2},
+	{"spmusic",     spcmd3},
+};
+
 /* tagging */
 /* static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }; */
 /* static const char *tags[] = { "1", "2", "3", "4", "5", "6" }; */
@@ -49,7 +63,10 @@ static const Rule rules[] = {
 	{ "Gimp",     NULL,       NULL,       1 << 4,            1,           -1 },
 	{ "Slack",     NULL,       NULL,       1 << 5,            0,           -1 },
 	{ "Matplotlib",     NULL,       NULL,       0,            1,           -1 },
-	{ "R_x11",     NULL,       NULL,       0,            1,           -1 },
+	{ "R_x11",     NULL,      NULL,       0,            1,           -1 },
+	{ NULL,		  "spterm",	  NULL,		SPTAG(0),		1,			 -1 },
+	{ NULL,		  "spcalc",	  NULL,		SPTAG(1),		1,			 -1 },
+	{ NULL,		  "spmusic",	NULL,		SPTAG(2),		1,			 -1 },
 };
 
 /* layout(s) */
@@ -81,8 +98,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
 #include <X11/XF86keysym.h>
 static Key keys[] = {
@@ -90,13 +105,14 @@ static Key keys[] = {
 	// Spawn keybindings
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ControlMask,           XK_Return,  togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY|ControlMask,  			XK_Return, togglescratch,  {.ui = 0 } },
+	{ MODKEY,           			XK_c,	   togglescratch,  {.ui = 1 } },
+	{ MODKEY,           			XK_b,	   togglescratch,  {.ui = 2 } },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("firefox") },
 	{ MODKEY,                       XK_n,      spawn,          SHCMD("st -e lf") },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("st -e newsboat") },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("buku-dmenu") },
-	{ MODKEY,                       XK_b,      spawn,          SHCMD("st -e ncmpcpp") },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("st -e ytop") },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("slack") },
 	{ MODKEY|ShiftMask,             XK_Escape, spawn,          SHCMD("shutdown.sh") },
