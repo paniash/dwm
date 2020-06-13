@@ -42,7 +42,7 @@ For keybindings, refer `config.h`.
 Currently I have the following patches installed,
 * Systray - for a systray on the statusbar for applets.
 * Actualfullscreen - allows windows to be actually fullscreen instead of going monocle and toggling off the statusbar (`super+f`).
-* Scratchpad - implements a scratchpad for simple tasks (`super+ctrl+return`).
+* Scratchpads - multiple scratchpads bound to various keys (just like i3wm!).
 * Pertag - maintain a layout per tag instead of per monitor (which is the default).
 * Noborder - removes borders when a window is present in monocle mode or only one window present in view.
 * Vanity gaps - adds inner, outer gaps that can be changed on the fly ~~(but works only in tiled layout, better than tilegap layout)~~ (new patch -> allows gaps in all layouts).
