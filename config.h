@@ -38,7 +38,7 @@ typedef struct {
 	const void *cmd;
 } Sp;
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34+460-200", NULL };
-const char *spcmd2[] = {"st", "-n", "spcalc", "-g", "50x20+760-360", "-e", "bc", "-lq", NULL };
+const char *spcmd2[] = {"st", "-n", "spcalc", "-g", "50x20", "-e", "bc", "-lq", NULL };
 const char *spcmd3[] = {"st", "-n", "spmusic", "-g", "120x34+520-200", "-e", "ncmpcpp", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
@@ -139,8 +139,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.02} },
 	{ MODKEY,                       XK_space,  zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,          		     XK_semicolon, shiftviewclients, { .i = +1 } },
-	{ MODKEY,             	        XK_apostrophe,  shiftviewclients, { .i = -1 } },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
