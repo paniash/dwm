@@ -64,13 +64,14 @@ static const Rule rules[] = {
 	{ "Slack",     NULL,       NULL,       1 << 5,            0,           -1 },
 	{ "Matplotlib",     NULL,       NULL,       0,            1,           -1 },
 	{ "R_x11",     NULL,      NULL,       0,            1,           -1 },
+	{ "Qalculate-gtk",     NULL,      NULL,       0,            1,           -1 },
 	{ NULL,		  "spterm",	  NULL,		SPTAG(0),		1,			 -1 },
 	{ NULL,		  "spcalc",	  NULL,		SPTAG(1),		1,			 -1 },
 	{ NULL,		  "spmusic",	NULL,		SPTAG(2),		1,			 -1 },
 };
 
 /* layout(s) */
-static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.52; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
