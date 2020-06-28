@@ -125,6 +125,7 @@ static Key keys[] = {
 	{ 0,                       XF86XK_AudioPlay,             spawn,          SHCMD("mpc toggle; pkill -RTMIN+11 dwmblocks") },
 	{ 0,                       XF86XK_AudioNext,     	 spawn,          SHCMD("mpc next; pkill -RTMIN+11 dwmblocks") },
 	{ 0,                       XF86XK_AudioPrev,     	 spawn,          SHCMD("mpc prev; pkill -RTMIN+11 dwmblocks") },
+	{ MODKEY,                  XK_semicolon, 	    	 spawn,          SHCMD("mpc shuffle; notify-send 'Music' 'Queue shuffled!'") },
 	{ 0,                       XF86XK_MonBrightnessUp,       spawn,          SHCMD("xbacklight -inc 5; pkill -RTMIN+9 dwmblocks") },
 	{ 0,                       XF86XK_MonBrightnessDown,     spawn,          SHCMD("xbacklight -dec 5; pkill -RTMIN+9 dwmblocks") },
 
