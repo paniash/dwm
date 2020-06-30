@@ -65,6 +65,7 @@ static const Rule rules[] = {
 	{ "Matplotlib",     NULL,       NULL,       0,            1,           -1 },
 	{ "R_x11",     NULL,      NULL,       0,            1,           -1 },
 	{ "Qalculate-gtk",     NULL,      NULL,       0,            1,           -1 },
+	{ "Alacritty",     NULL,      NULL,       0,            1,           -1 },
 	{ NULL,		  "spterm",	  NULL,		SPTAG(0),		1,			 -1 },
 	{ NULL,		  "spcalc",	  NULL,		SPTAG(1),		1,			 -1 },
 	{ NULL,		  "spmusic",	NULL,		SPTAG(2),		1,			 -1 },
@@ -125,7 +126,7 @@ static Key keys[] = {
 	{ 0,                       XF86XK_AudioPlay,             spawn,          SHCMD("mpc toggle; pkill -RTMIN+11 dwmblocks") },
 	{ 0,                       XF86XK_AudioNext,     	 spawn,          SHCMD("mpc next; pkill -RTMIN+11 dwmblocks") },
 	{ 0,                       XF86XK_AudioPrev,     	 spawn,          SHCMD("mpc prev; pkill -RTMIN+11 dwmblocks") },
-	{ MODKEY,                  XK_semicolon, 	    	 spawn,          SHCMD("mpc shuffle; notify-send 'Music' 'Queue shuffled!'") },
+	{ MODKEY,                  XK_semicolon, 	    	 spawn,          SHCMD("mpc shuffle; notify-send 'Music Player Daemon' 'Queue shuffled!'") },
 	{ 0,                       XF86XK_MonBrightnessUp,       spawn,          SHCMD("xbacklight -inc 5; pkill -RTMIN+9 dwmblocks") },
 	{ 0,                       XF86XK_MonBrightnessDown,     spawn,          SHCMD("xbacklight -dec 5; pkill -RTMIN+9 dwmblocks") },
 
