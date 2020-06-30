@@ -115,7 +115,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("st -e newsboat") },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("buku-dmenu") },
-	{ MODKEY,                       XK_p,      spawn,          SHCMD("st -e ytop") },
+	{ MODKEY,                       XK_p,      spawn,          SHCMD("pcmanfm") },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("slack") },
 	{ MODKEY|ShiftMask,             XK_Escape, spawn,          SHCMD("shutdown.sh") },
 
