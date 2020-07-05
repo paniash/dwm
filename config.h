@@ -17,7 +17,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrains Mono:size=12",
 					"IPAGothic:style=Regular",
 					"FontAwesome:style=Regular:size=11:antialias=true:autohint=true",
-					"MaterialIcons:style=Regular:size=13:antialias=true:autohint=true"
+					"Ionicons:style=Regular:size=11:antialias=true:autohint=true"
 };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
@@ -116,6 +116,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("st -e newsboat") },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("buku-dmenu") },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("pcmanfm") },
+	{ MODKEY,                       XK_z,      spawn,          SHCMD("st -e htop") },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("slack") },
 	{ MODKEY|ShiftMask,             XK_Escape, spawn,          SHCMD("shutdown.sh") },
 
