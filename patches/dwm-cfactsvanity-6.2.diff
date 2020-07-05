@@ -1,0 +1,78 @@
+--- config.def.h	2020-07-05 21:47:08.340161636 +0530
++++ config.def.h	2020-07-05 21:55:25.330174260 +0530
+@@ -100,6 +100,9 @@
+ 	{ MODKEY,                       XK_o,      incnmaster,     {.i = -1 } },
+ 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.02} },
+ 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.02} },
++	{ MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
++	{ MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -0.25} },
++	{ MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
+ 	{ MODKEY,                       XK_r,      resetlayout,    {0} },
+ 	{ MODKEY,                       XK_Return, zoom,           {0} },
+ 	{ MODKEY,                       XK_Tab,    view,           {0} },
+--- dwm.c	2020-07-05 21:47:00.100161426 +0530
++++ dwm.c	2020-07-05 21:58:32.130179005 +0530
+@@ -108,6 +108,7 @@
+ struct Client {
+ 	char name[256];
+ 	float mina, maxa;
++	float cfact;
+ 	int x, y, w, h;
+ 	int oldx, oldy, oldw, oldh;
+ 	int basew, baseh, incw, inch, maxw, maxh, minw, minh;
+@@ -243,6 +244,7 @@
+ static void setfocus(Client *c);
+ static void setfullscreen(Client *c, int fullscreen);
+ static void setlayout(const Arg *arg);
++static void setcfact(const Arg *arg);
+ static void setmfact(const Arg *arg);
+ static void setup(void);
+ static void seturgent(Client *c, int urg);
+@@ -1188,6 +1190,7 @@
+ 	c->w = c->oldw = wa->width;
+ 	c->h = c->oldh = wa->height;
+ 	c->oldbw = wa->border_width;
++	c->cfact = 1.0;
+ 
+ 	updatetitle(c);
+ 	if (XGetTransientForHint(dpy, w, &trans) && (t = wintoclient(trans))) {
+@@ -1851,6 +1854,24 @@
+ 		drawbar(selmon);
+ }
+ 
++void
++setcfact(const Arg *arg) {
++	float f;
++	Client *c;
++
++	c = selmon->sel;
++
++	if(!arg || !c || !selmon->lt[selmon->sellt]->arrange)
++		return;
++	f = arg->f + c->cfact;
++	if(arg->f == 0.0)
++		f = 1.0;
++	else if(f < 0.25 || f > 4.0)
++		return;
++	c->cfact = f;
++	arrange(selmon);
++}
++
+ /* arg > 1.0 will set mfact absolutely */
+ void
+ setmfact(const Arg *arg)
+--- vanitygaps.c	2020-07-05 21:47:18.540161895 +0530
++++ vanitygaps.c	2020-07-05 22:08:12.570193748 +0530
+@@ -800,10 +800,10 @@
+ 
+ 	for (i = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
+ 		if (i < m->nmaster) {
+-			resize(c, mx, my, mw - (2*c->bw), (mh / mfacts) + (i < mrest ? 1 : 0) - (2*c->bw), 0);
++			resize(c, mx, my, mw - (2*c->bw), mh * (c->cfact / mfacts) + (i < mrest ? 1 : 0) - (2*c->bw), 0);
+ 			my += HEIGHT(c) + ih;
+ 		} else {
+-			resize(c, sx, sy, sw - (2*c->bw), (sh / sfacts) + ((i - m->nmaster) < srest ? 1 : 0) - (2*c->bw), 0);
++			resize(c, sx, sy, sw - (2*c->bw), sh * (c->cfact / sfacts) + ((i - m->nmaster) < srest ? 1 : 0) - (2*c->bw), 0);
+ 			sy += HEIGHT(c) + ih;
+ 		}
+ }
