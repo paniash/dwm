@@ -119,6 +119,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_z,      spawn,          SHCMD("st -e htop") },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("slack") },
 	{ MODKEY|ShiftMask,             XK_Escape, spawn,          SHCMD("shutdown.sh") },
+	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("lgout") },
 
 	// Media keys
 	{ 0,                       XF86XK_AudioMute,             spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+10 dwmblocks") },
