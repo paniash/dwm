@@ -34,7 +34,7 @@ while :; do
 done
 ```
 
-Please remove the `exec dwm` line if you're going to use the above script. 
+Please remove the `exec dwm` line if you're going to use the above script.
 For keybindings, refer `config.h`.
 
 
@@ -52,10 +52,11 @@ Currently I have the following patches installed,
 * Reset_mfact (modified resetlayout) - resets mfact on tag when only 1 client is present.
 * Moveresize - grants user to move and change the dimensions of floating windows without touching the mouse!
 
-## Goals
+## To-do
 * ~~To add gaps (for aesthetics).~~
 * ~~To implement moving individual windows along the stack manually.~~ Implemented in push_no_master patch.
 * ~~To implement true fullscreen.~~ Done in the actual fullscreen patch.
+- Implement resizing of stack windows (bspwm-like behaviour).
 
 ## Please install `libxft-bgra`!
 This build of dwm does not implement color emoji in the statusbar, so you must install [libxft-bgra](https://aur.archlinux.org/packages/libxft-bgra/) from the AUR, which fixes the color emoji rendering problem, otherwise dwm will crash upon trying to render one. Note that this is only a temporary solution (hopefully) and will get fixed upstream by the suckless guys.
