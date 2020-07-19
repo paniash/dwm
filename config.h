@@ -117,7 +117,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("buku-dmenu") },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("pcmanfm") },
 	{ MODKEY,                       XK_z,      spawn,          SHCMD("st -e htop") },
-	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("slack") },
 	{ MODKEY|ControlMask,           XK_s,      spawn,          SHCMD("scrotpick") },
 	{ MODKEY|ShiftMask,             XK_Escape, spawn,          SHCMD("shutdown.sh") },
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("lgout") },
@@ -133,7 +132,7 @@ static Key keys[] = {
 	{ 0,                       XF86XK_MonBrightnessUp,       spawn,          SHCMD("xbacklight -inc 5; pkill -RTMIN+9 dwmblocks") },
 	{ 0,                       XF86XK_MonBrightnessDown,     spawn,          SHCMD("xbacklight -dec 5; pkill -RTMIN+9 dwmblocks") },
 
-	
+
 	/* { MODKEY,                       XK_y,      togglebar,      {0} }, */
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
