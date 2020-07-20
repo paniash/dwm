@@ -62,6 +62,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       1 << 4,            1,           -1 },
 	{ "Slack",     NULL,       NULL,       1 << 5,            0,           -1 },
+	{ "Discord",     NULL,       NULL,       1 << 5,            0,           -1 },
 	{ "Matplotlib",     NULL,       NULL,       0,            1,           -1 },
 	{ "R_x11",     NULL,      NULL,       0,            1,           -1 },
 	{ "Qalculate-gtk",     NULL,      NULL,       0,            1,           -1 },
