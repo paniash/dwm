@@ -51,7 +51,6 @@ Currently I have the following patches installed,
 * Focusonactive - patch that for example when opening a url in one tag shifts focus to the tag where the browser is present.
 * Reset_mfact (modified resetlayout) - resets mfact on tag when only 1 client is present.
 * Moveresize - grants user to move and change the dimensions of floating windows without touching the mouse!
-- Alwayscenter - centers all floating windows by default, instead of window rules.
 
 ## To-do
 * ~~To add gaps (for aesthetics).~~
