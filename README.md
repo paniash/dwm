@@ -52,6 +52,7 @@ Currently I have the following patches installed,
 * Reset_mfact (modified resetlayout) - resets mfact on tag when only 1 client is present.
 * Moveresize - grants user to move and change the dimensions of floating windows without touching the mouse!
 - Alwayscenter - All floating windows are centered without window rules.
+- Savefloats - saves floating windows in position and size before forcing it into tiling mode.
 
 ## To-do
 * ~~To add gaps (for aesthetics).~~
