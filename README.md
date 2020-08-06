@@ -53,6 +53,7 @@ Currently I have the following patches installed,
 * Moveresize - grants user to move and change the dimensions of floating windows without touching the mouse!
 - Alwayscenter - All floating windows are centered without window rules.
 - Savefloats - saves floating windows in position and size before forcing it into tiling mode.
+- Focusmaster - shift focus to master from any window in the stack using a key-bind.
 
 ## To-do
 * ~~To add gaps (for aesthetics).~~
