@@ -5,6 +5,9 @@ Ok so this is epic. I recently switched from bspwm to dwm and so far I'm loving 
 
 This repository contains my build files of dwm which I'll be updating as and when I patch the source code to my liking. If you're new to dwm, please refer to their official [website](https://dwm.suckless.org).
 
+#### Screenshot
+![Where it all started](./dwmshot.png)
+
 ### Requirements
 In order to build dwm you need the Xlib header files and for the statusbar you'll need the `xsetroot` package from Xorg. If you're on an Arch-based distro install `xorg-xsetroot`.
 
