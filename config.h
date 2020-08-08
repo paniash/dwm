@@ -3,6 +3,7 @@
 /* appearance */
 static const unsigned int borderpx  = 2.5;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const unsigned int gappih    = 4;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 4;       /* vert inner gap between windows */
 static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
@@ -59,14 +60,16 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",           NULL,      NULL,       1 << 4,       0,           -1 },
-	{ "Matplotlib",     NULL,      NULL,       0,            1,           -1 },
-	{ "R_x11",          NULL,      NULL,       0,            1,           -1 },
-	{ "Qalculate-gtk",  NULL,      NULL,       0,            1,           -1 },
-	{ NULL,		  "spterm",	  NULL,		SPTAG(0),		1,			 -1 },
-	{ NULL,		  "spcalc",	  NULL,		SPTAG(1),		1,			 -1 },
-	{ NULL,		  "spmusic",	NULL,		SPTAG(2),		1,			 -1 },
+	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
+	{ "Gimp",    NULL,     NULL,           1 << 4,         0,          0,           1,        -1 },
+	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ "Matplotlib",     NULL,      NULL,       0,            1, 0, 1,           -1 },
+	{ "R_x11",          NULL,      NULL,       0,            1, 0, 1,           -1 },
+	{ "Qalculate-gtk",  NULL,      NULL,       0,            1, 0, 1,           -1 },
+	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	{ NULL,		  "spterm",		NULL,		SPTAG(0),		1, 0, 1,			 -1 },
+	{ NULL,		  "spcalc",		NULL,		SPTAG(1),		1, 0, 1,			 -1 },
+	{ NULL,		  "spmusic",	NULL,		SPTAG(2),		1, 0, 1,			 -1 },
 };
 
 /* layout(s) */
