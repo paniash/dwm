@@ -73,7 +73,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.54; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.52; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
@@ -130,7 +130,7 @@ static Key keys[] = {
 	{ 0,                       XF86XK_AudioPlay,             spawn,          SHCMD("mpc toggle; pkill -RTMIN+11 dwmblocks") },
 	{ 0,                       XF86XK_AudioNext,     	 spawn,          SHCMD("mpc next; pkill -RTMIN+11 dwmblocks") },
 	{ 0,                       XF86XK_AudioPrev,     	 spawn,          SHCMD("mpc prev; pkill -RTMIN+11 dwmblocks") },
-	{ MODKEY|ControlMask,                  XK_semicolon, 	    	 spawn,          SHCMD("mpc shuffle; notify-send 'Music Player Daemon' 'Queue shuffled!'") },
+	{ MODKEY,                  XK_semicolon, 	    	 spawn,          SHCMD("mpc shuffle; notify-send 'Music Player Daemon' 'Queue shuffled!'") },
 	{ 0,                       XF86XK_MonBrightnessUp,       spawn,          SHCMD("xbacklight -inc 5; pkill -RTMIN+9 dwmblocks") },
 	{ 0,                       XF86XK_MonBrightnessDown,     spawn,          SHCMD("xbacklight -dec 5; pkill -RTMIN+9 dwmblocks") },
 
@@ -141,8 +141,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_j,      pushdown,       {0} },
 	{ MODKEY|ShiftMask,             XK_k,      pushup,         {0} },
 	{ MODKEY,                       XK_i,      focusmaster,    {0} },
-	{ MODKEY,                       XK_semicolon,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_apostrophe,      incnmaster,     {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_semicolon,      incnmaster,     {.i = +1 } },
+	{ MODKEY|ControlMask,           XK_apostrophe,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.02} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.02} },
 	{ MODKEY,                       XK_space,  zoom,           {0} },
