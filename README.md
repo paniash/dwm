@@ -10,7 +10,7 @@ In order to build dwm you need the Xlib header files and for the statusbar you'l
 
 ## Installation
 Fire up a terminal and type the following commands:
-```
+```shell
 git clone https://github.com/paniash/dwm
 cd dwm
 sudo make clean install
@@ -26,7 +26,7 @@ the `/usr/share/xsessions` directory).
 dwm doesn't have a restart option by default so after compiling the build files, you'll have to log
 out and log back in which is tbh a pita. There are 2 patches on the website but I'd suggest to add
 the following line (mentioned on the suckless website) in your `.xinitrc` which is essentially a while loop:
-```
+```shell
 #!/bin/sh
 
 while :; do
