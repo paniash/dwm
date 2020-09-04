@@ -1,5 +1,5 @@
 # Ashish's build of dwm
-Ok so this is epic. I recently switched from bspwm to dwm and so far I'm loving it. As quoted on the [suckless](https://dwm.suckless.org) website:
+Ok so this is epic. I recently switched from [bspwm](https://github.com/baskerville/bspwm) to dwm and so far I'm loving it. As quoted on the [suckless](https://dwm.suckless.org) website:
 
 > dwm is an extremely fast, small, and dynamic window manager for X window system.
 
