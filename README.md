@@ -24,8 +24,8 @@ the `/usr/share/xsessions` directory).
 
 ### Note
 dwm doesn't have a restart option by default so after compiling the build files, you'll have to log
-out and log back in which is tbh a pita. There are 2 patches on the website but I'd suggest to add
-the following line (mentioned on the suckless website) in your `.xinitrc` which is essentially a while loop:
+out and log back in which is a PITA. There are 2 patches on the website but I'd suggest to add
+the following line (mentioned on the suckless website) in your `.xinitrc` which is essentially, a while loop:
 ```shell
 #!/bin/sh
 
