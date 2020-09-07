@@ -65,6 +65,7 @@ static const Rule rules[] = {
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "Matplotlib",     NULL,      NULL,       0,            1, 0, 1,           -1 },
 	{ "R_x11",          NULL,      NULL,       0,            1, 0, 1,           -1 },
+	{ "gnuplot_qt",     NULL,      NULL,       0,            1, 0, 1,           -1 },
 	{ "Qalculate-gtk",  NULL,      NULL,       0,            1, 0, 1,           -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 	{ NULL,		  "spterm",		NULL,		SPTAG(0),		1, 0, 1,			 -1 },

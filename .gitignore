@@ -2,3 +2,5 @@
 *.rej
 README
 dwm
+drw.o
+util.o
