@@ -41,7 +41,6 @@ For keybindings, refer `config.h`.
 ### Patches
 Currently I have the following patches installed,
 * Systray - for a systray on the statusbar for applets.
-* Actualfullscreen - allows windows to be actually fullscreen instead of going monocle and toggling off the statusbar (`super+f`).
 * Scratchpads - multiple scratchpads bound to various keys (just like i3wm!).
 * Pertag - maintain a layout per tag instead of per monitor (which is the default).
 * Noborder - removes borders when a window is present in monocle mode or only one window present in view.
@@ -55,6 +54,7 @@ Currently I have the following patches installed,
 - Savefloats - saves floating windows in position and size before forcing it into tiling mode.
 - Focusmaster - shift focus to master from any window in the stack using a key-bind.
 - Swallow - swallows windows and essentially gives my terminal, the ability to watch videos and view images (in a way).
+- Fullscreen compilation - Allows fakefullscreen and fullscreen with much more practicality into it.
 
 ## To-do
 * ~~To add gaps (for aesthetics).~~
