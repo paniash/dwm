@@ -15,8 +15,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "xos4 Terminus:size=14.5",  // Stable: JetBrains Mono:size=12
-					"IPAGothic:style=Regular",
+static const char *fonts[]          = { "xos4 Terminus:size=14.5",  // Stable: JetBrains Mono:size=12 ; Japanese: IPAGothic:style=Regular
 					"FontAwesome:style=Regular:size=11:antialias=true:autohint=true",
 					"Ionicons:style=Regular:size=11:antialias=true:autohint=true"
 };
@@ -24,7 +23,7 @@ static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#050000";
+static const char col_gray4[]       = "#000000";
 static const char col_gray5[]       = "#9f9ea8";
 static const char col_cyan[]        = "#005577";
 static const char col_cyan2[]       = "#007777";
@@ -49,11 +48,11 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-/* static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }; */
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 /* static const char *tags[] = { "1", "2", "3", "4", "5", "6" }; */
 /* static const char *tags[] = { "I", "II", "III", "IV", "V", "VI" }; */
 /* static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" }; */
-static const char *tags[] = { "一", "二", "三", "四", "五", "六" };
+/* static const char *tags[] = { "一", "二", "三", "四", "五", "六" }; */
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -121,6 +120,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("buku-dmenu") },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("pcmanfm") },
 	{ MODKEY,                       XK_z,      spawn,          SHCMD("st -e htop") },
+	{ MODKEY|ShiftMask,             XK_z,      spawn,          SHCMD("firejail zoom") },
 	{ MODKEY|ControlMask,           XK_s,      spawn,          SHCMD("scrotpick") },
 	{ MODKEY|ShiftMask,             XK_Escape, spawn,          SHCMD("shutdown.sh") },
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("lgout") },
