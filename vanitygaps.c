@@ -13,7 +13,7 @@ static void togglegaps(const Arg *arg);
 /* static void bstackhoriz(Monitor *m); */
 /* static void centeredmaster(Monitor *m); */
 /* static void centeredfloatingmaster(Monitor *m); */
-/* static void deck(Monitor *m); */
+static void deck(Monitor *m);
 /* static void dwindle(Monitor *m); */
 /* static void fibonacci(Monitor *m, int s); */
 /* static void grid(Monitor *m); */

@@ -84,6 +84,7 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "[D]",      deck },
 };
 
 /* key definitions */
@@ -114,7 +115,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("firefox") },
 	{ MODKEY|ControlMask,           XK_a,      spawn,          SHCMD("firefox https://open.spotify.com") },
 	{ MODKEY,                       XK_s,      spawn,          SHCMD("firefox https://qiskit.slack.com") },
-	/* { MODKEY,                       XK_n,      spawn,          SHCMD("st -e nnn -d -e") }, */
 	{ MODKEY,                       XK_n,      spawn,          SHCMD("st -e lf") },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("st -e newsboat") },
@@ -130,9 +130,9 @@ static Key keys[] = {
 	{ 0,                       XF86XK_AudioRaiseVolume,      spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%; pkill -RTMIN+10 dwmblocks") },
 	{ 0,                       XF86XK_AudioLowerVolume,      spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%; pkill -RTMIN+10 dwmblocks") },
 	{ 0,                       XF86XK_AudioPlay,             spawn,          SHCMD("mpc toggle; pkill -RTMIN+11 dwmblocks") },
-	{ 0,                       XF86XK_AudioNext,     	 spawn,          SHCMD("mpc next; pkill -RTMIN+11 dwmblocks") },
-	{ 0,                       XF86XK_AudioPrev,     	 spawn,          SHCMD("mpc prev; pkill -RTMIN+11 dwmblocks") },
-	{ MODKEY,                  XK_semicolon, 	    	 spawn,          SHCMD("mpc shuffle; notify-send 'Music Player Daemon' 'Queue shuffled!'") },
+	{ 0,                       XF86XK_AudioNext,     	     spawn,          SHCMD("mpc next; pkill -RTMIN+11 dwmblocks") },
+	{ 0,                       XF86XK_AudioPrev,     	     spawn,          SHCMD("mpc prev; pkill -RTMIN+11 dwmblocks") },
+	{ MODKEY,                  XK_semicolon, 	    	     spawn,          SHCMD("mpc shuffle; notify-send 'Music Player Daemon' 'Queue shuffled!'") },
 	{ 0,                       XF86XK_MonBrightnessUp,       spawn,          SHCMD("xbacklight -inc 5; pkill -RTMIN+9 dwmblocks") },
 	{ 0,                       XF86XK_MonBrightnessDown,     spawn,          SHCMD("xbacklight -dec 5; pkill -RTMIN+9 dwmblocks") },
 
@@ -153,6 +153,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_e,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY|ControlMask,           XK_d,      setlayout,      {.v = &layouts[3]} },
 	/* { MODKEY,                       XK_space,  setlayout,      {0} }, */
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY|ControlMask,           XK_j,  	   moveresize,     {.v = "0x 40y 0w 0h" } },
