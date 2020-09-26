@@ -13,7 +13,7 @@ static void togglegaps(const Arg *arg);
 /* static void bstackhoriz(Monitor *m); */
 /* static void centeredmaster(Monitor *m); */
 /* static void centeredfloatingmaster(Monitor *m); */
-static void deck(Monitor *m);
+/* static void deck(Monitor *m); */
 /* static void dwindle(Monitor *m); */
 /* static void fibonacci(Monitor *m, int s); */
 /* static void grid(Monitor *m); */
@@ -453,7 +453,7 @@ deck(Monitor *m)
 	getfacts(m, mh, sh, &mfacts, &sfacts, &mrest, &srest);
 
 	if (n - m->nmaster > 0) /* override layout symbol */
-		snprintf(m->ltsymbol, sizeof m->ltsymbol, "D %d", n - m->nmaster);
+		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[D] %d", n - m->nmaster);
 
 	for (i = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
 		if (i < m->nmaster) {
