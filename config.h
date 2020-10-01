@@ -23,7 +23,8 @@ static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#000000";
+static const char col_gray4[]       = "#eeeeee";
+static const char col_black[]       = "#000000";
 static const char col_gray5[]       = "#9f9ea8";
 static const char col_cyan[]        = "#005577";
 static const char col_cyan2[]       = "#007777";
@@ -112,7 +113,6 @@ static Key keys[] = {
 	{ MODKEY,           	        XK_c,	   togglescratch,  {.ui = 1 } },
 	{ MODKEY,           	        XK_b,	   togglescratch,  {.ui = 2 } },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("firefox") },
-	{ MODKEY|ControlMask,           XK_a,      spawn,          SHCMD("firefox https://open.spotify.com") },
 	{ MODKEY,                       XK_s,      spawn,          SHCMD("firefox https://qiskit.slack.com") },
 	{ MODKEY,                       XK_n,      spawn,          SHCMD("st -e lf") },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
