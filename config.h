@@ -112,6 +112,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,  	        XK_Return, togglescratch,  {.ui = 0 } },
 	{ MODKEY,           	        XK_c,	   togglescratch,  {.ui = 1 } },
 	{ MODKEY,           	        XK_b,	   togglescratch,  {.ui = 2 } },
+	{ MODKEY|ControlMask,           XK_c,      spawn,          SHCMD("qalculate-gtk") },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("firefox") },
 	{ MODKEY,                       XK_s,      spawn,          SHCMD("firefox https://qiskit.slack.com") },
 	{ MODKEY,                       XK_n,      spawn,          SHCMD("st -e lf") },
