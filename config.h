@@ -62,7 +62,7 @@ static const Rule rules[] = {
 	 */
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "Gimp",    NULL,     NULL,           1 << 4,         0,          0,           1,        -1 },
-	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ "st-256color",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "Matplotlib",     NULL,      NULL,       0,            1, 0, 1,           -1 },
 	{ "R_x11",          NULL,      NULL,       0,            1, 0, 1,           -1 },
 	{ "gnuplot_qt",     NULL,      NULL,       0,            1, 0, 1,           -1 },
@@ -115,7 +115,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_c,      spawn,          SHCMD("qalculate-gtk") },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("firefox") },
 	{ MODKEY,                       XK_s,      spawn,          SHCMD("firefox https://qiskit.slack.com") },
-	{ MODKEY,                       XK_n,      spawn,          SHCMD("st -e lf") },
+	{ MODKEY,                       XK_n,      spawn,          SHCMD("st -e vifm ~/") },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("st -e newsboat") },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("buku-dmenu") },
