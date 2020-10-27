@@ -66,8 +66,5 @@ Currently I have the following patches installed,
 ## Please install `libxft-bgra`!
 This build of dwm does not implement color emoji in the statusbar, so you must install [libxft-bgra](https://aur.archlinux.org/packages/libxft-bgra/) from the AUR, which fixes the color emoji rendering problem, otherwise dwm will crash upon trying to render one. Note that this is only a temporary solution (hopefully) and will get fixed upstream by the suckless guys.
 
-#### Note
-This is a suckless utility so any problem that you face will be upto you to fix it. This build is
-merely a guide for an easy and fast setup. Be sure to checkout the main
-[website](https://dwm.suckless.org) for a tutorial and
-patches to make dwm more customizable.
+### Issues & Contributing
+If you're facing issues with this build, feel free to open an issue in the issue tracker and I'll try my best to resolve it. Feel free to suggest changes and open PRs as well. ;)
