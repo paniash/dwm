@@ -55,6 +55,7 @@ Currently I have the following patches installed,
 - Focusmaster - shift focus to master from any window in the stack using a key-bind.
 - Swallow - swallows windows and essentially gives my terminal, the ability to watch videos and view images (in a way).
 - Fullscreen compilation - Allows fakefullscreen and fullscreen with much more practicality into it.
+- Shiftviewclients - Cycle through non-empty tags.
 
 ## To-do
 * ~~To add gaps (for aesthetics).~~
