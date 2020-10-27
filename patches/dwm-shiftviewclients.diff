@@ -1,0 +1,72 @@
+From 7d2a8bf0773ab9d659643ef57b9033062ef207c4 Mon Sep 17 00:00:00 2001
+From: bakkeby <bakkeby@gmail.com>
+Date: Sun, 3 May 2020 15:55:08 +0200
+Subject: [PATCH] This variant of the shiftview patch adds left and right
+ circular shift through tags, but skips tags where there are no clients.
+
+---
+ config.def.h |  2 ++
+ dwm.c        | 31 +++++++++++++++++++++++++++++++
+ 2 files changed, 33 insertions(+)
+
+diff --git a/config.def.h b/config.def.h
+index 1c0b587..ad3a5fd 100644
+--- config.def.h	2020-10-26 22:59:08.785456761 +0530
++++ config.def.h	2020-10-26 23:04:28.525448526 +0530
+@@ -105,6 +105,8 @@
+ 	{ MODKEY,                       XK_r,      resetlayout,    {0} },
+ 	{ MODKEY,                       XK_Return, zoom,           {0} },
+ 	{ MODKEY,                       XK_Tab,    view,           {0} },
++	{ MODKEY|ShiftMask,             XK_l,      shiftviewclients,     {.i = +1 } },
++	{ MODKEY|ShiftMask,             XK_h,      shiftviewclients,     {.i = -1 } },
+ 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+ 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+ 	{ MODKEY,                       XK_e,      setlayout,      {.v = &layouts[1]} },
+--- dwm.c.patch	2020-10-26 22:59:18.445456512 +0530
++++ dwm.c	2020-10-26 23:08:45.625441904 +0530
+@@ -254,6 +254,7 @@
+ static void setmfact(const Arg *arg);
+ static void setup(void);
+ static void seturgent(Client *c, int urg);
++static void shiftviewclients(const Arg *arg);
+ static void showhide(Client *c);
+ static void sigchld(int unused);
+ static void spawn(const Arg *arg);
+@@ -2091,6 +2092,36 @@
+ }
+
++void
++shiftviewclients(const Arg *arg)
++{
++	Arg shifted;
++	Client *c;
++	unsigned int tagmask = 0;
++
++	for (c = selmon->clients; c; c = c->next)
++		#if SCRATCHPADS_PATCH
++		if (!(c->tags & SPTAGMASK))
++			tagmask = tagmask | c->tags;
++		#else
++		tagmask = tagmask | c->tags;
++		#endif // SCRATCHPADS_PATCH
++
++	shifted.ui = selmon->tagset[selmon->seltags];
++	if (arg->i > 0) // left circular shift
++		do {
++			shifted.ui = (shifted.ui << arg->i)
++			   | (shifted.ui >> (LENGTH(tags) - arg->i));
++		} while (tagmask && !(shifted.ui & tagmask));
++	else // right circular shift
++		do {
++			shifted.ui = (shifted.ui >> (- arg->i)
++			   | shifted.ui << (LENGTH(tags) + arg->i));
++		} while (tagmask && !(shifted.ui & tagmask));
++
++	view(&shifted);
++}
++
+ void
+ showhide(Client *c)
+ {
+ 	if (!c)
+--
