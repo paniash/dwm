@@ -34,20 +34,6 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan2,  col_gray5 },
 };
 
-typedef struct {
-	const char *name;
-	const void *cmd;
-} Sp;
-const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34+460-200", NULL };
-const char *spcmd2[] = {"st", "-n", "spcalc", "-g", "50x20", "-e", "bc", "-lq", NULL };
-const char *spcmd3[] = {"st", "-n", "spmusic", "-g", "120x34+520-200", "-e", "ncmpcpp", NULL };
-static Sp scratchpads[] = {
-	/* name          cmd  */
-	{"spterm",      spcmd1},
-	{"spcalc",      spcmd2},
-	{"spmusic",     spcmd3},
-};
-
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 /* static const char *tags[] = { "1", "2", "3", "4", "5", "6" }; */
@@ -68,9 +54,6 @@ static const Rule rules[] = {
 	{ "gnuplot_qt",     NULL,      NULL,       0,            1, 0, 1,           -1 },
 	{ "Qalculate-gtk",  NULL,      NULL,       0,            1, 0, 1,           -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
-	{ NULL,		  "spterm",		NULL,		SPTAG(0),		1, 0, 1,			 -1 },
-	{ NULL,		  "spcalc",		NULL,		SPTAG(1),		1, 0, 1,			 -1 },
-	{ NULL,		  "spmusic",	NULL,		SPTAG(2),		1, 0, 1,			 -1 },
 };
 
 /* layout(s) */
@@ -109,9 +92,6 @@ static Key keys[] = {
 	// Spawn keybindings
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ControlMask,  	        XK_Return, togglescratch,  {.ui = 0 } },
-	{ MODKEY,           	        XK_c,	   togglescratch,  {.ui = 1 } },
-	{ MODKEY,           	        XK_b,	   togglescratch,  {.ui = 2 } },
 	{ MODKEY|ControlMask,           XK_c,      spawn,          SHCMD("qalculate-gtk") },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("firefox") },
 	{ MODKEY,                       XK_s,      spawn,          SHCMD("firefox https://qiskit.slack.com") },
