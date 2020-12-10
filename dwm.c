@@ -262,7 +262,6 @@ static Monitor *systraytomon(Monitor *m);
 static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
 static void togglebar(const Arg *arg);
-static void focusmode(const Arg *arg);
 static void togglefakefullscreen(const Arg *arg);
 static void togglefloating(const Arg *arg);
 static void togglefullscreen(const Arg *arg);
@@ -3015,33 +3014,6 @@ zoom(const Arg *arg)
 		if (!c || !(c = nexttiled(c->next)))
 			return;
 	pop(c);
-}
-
-void
-focusmode(const Arg *arg)
-{
-	selmon->showbar = selmon->pertag->showbars[selmon->pertag->curtag] = !selmon->showbar;
-	updatebarpos(selmon);
-	resizebarwin(selmon);
-	if (showsystray) {
-		XWindowChanges wc;
-		if (!selmon->showbar)
-			wc.y = -bh;
-		else if (selmon->showbar) {
-			wc.y = 0;
-			if (!selmon->topbar)
-				wc.y = selmon->mh - bh;
-		}
-		XConfigureWindow(dpy, systray->win, CWY, &wc);
-	}
-	arrange(selmon);
-
-	#if PERTAG_PATCH
-	selmon->pertag->enablegaps[selmon->pertag->curtag] = !selmon->pertag->enablegaps[selmon->pertag->curtag];
-	#else
-	enablegaps = !enablegaps;
-	#endif // PERTAG_PATCH
-	arrange(NULL);
 }
 
 int

@@ -138,7 +138,7 @@ static Key keys[] = {
 	{ 0,                       XF86XK_MonBrightnessDown,     spawn,          SHCMD("xbacklight -dec 5; pkill -RTMIN+9 dwmblocks") },
 
 
-	{ MODKEY,                       XK_y,      focusmode,      {0} },
+	/* { MODKEY,                       XK_y,      togglebar,      {0} }, */
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_j,      pushdown,       {0} },
