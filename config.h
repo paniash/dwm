@@ -15,7 +15,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "xos4 Terminus:size=14.5",  // Stable: JetBrains Mono:size=12 ; Japanese: IPAGothic:style=Regular
+static const char *fonts[]          = { "Terminus (TTF):style=Medium:size=15",  // Stable: JetBrains Mono:size=12 ; Japanese: IPAGothic:style=Regular
 					"FontAwesome:style=Regular:size=11:antialias=true:autohint=true",
 					"Ionicons:style=Regular:size=11:antialias=true:autohint=true"
 };
@@ -81,6 +81,7 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
+#define PERTAG_PATCH 1
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
