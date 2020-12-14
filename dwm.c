@@ -349,6 +349,7 @@ struct Pertag {
 	unsigned int sellts[LENGTH(tags) + 1]; /* selected layouts */
 	const Layout *ltidxs[LENGTH(tags) + 1][2]; /* matrix of tags and layouts indexes  */
 	int showbars[LENGTH(tags) + 1]; /* display bar for the current tag */
+	int enablegaps[LENGTH(tags) + 1]; /* added with vanitygaps */
 };
 
 /* compile-time check if all tags fit into an unsigned int bit array. */
@@ -848,6 +849,8 @@ createmon(void)
 		m->pertag->sellts[i] = m->sellt;
 
 		m->pertag->showbars[i] = m->showbar;
+
+		m->pertag->enablegaps[i] = 1;  // compatibility with pertag and togglegaps
 	}
 
 	return m;
