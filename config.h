@@ -65,6 +65,7 @@ static const Rule rules[] = {
 	{ "Gimp",    NULL,     NULL,           1 << 4,         0,          0,           1,        -1 },
 	{ "discord",    NULL,     NULL,           1 << 8,         0,          0,           1,        -1 },
 	{ "Slack",    NULL,     NULL,           1 << 7,         0,          0,           1,        -1 },
+	{ "zoom",    NULL,     NULL,           1 << 6,         0,          0,           1,        -1 },
 	{ "st-256color",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "Matplotlib",     NULL,      NULL,       0,            1, 0, 1,           -1 },
 	{ "R_x11",          NULL,      NULL,       0,            1, 0, 1,           -1 },
