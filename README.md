@@ -1,3 +1,7 @@
+<!-- badges: start -->
+![License](https://img.shields.io/badge/license-MIT-brightgreen)
+<!-- badges: end -->
+
 # Ashish's build of dwm
 
 Ok so this is epic. I recently switched from [bspwm](https://github.com/baskerville/bspwm) to dwm and so far I'm loving it. As quoted on the [suckless](https://dwm.suckless.org) website:
