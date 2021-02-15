@@ -32,7 +32,7 @@ static const char col_cyan3[]       = "#006677";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, NULL },
-	[SchemeSel]  = { col_gray4, col_cyan3,  col_gray5 },
+	[SchemeSel]  = { col_gray4, col_cyan,  col_gray5 },
 };
 
 typedef struct {
