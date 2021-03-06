@@ -17,7 +17,6 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Terminus (TTF):style=Medium:size=15",  // Stable: JetBrains Mono:size=12 ; Japanese: IPAGothic:style=Regular
 					"FontAwesome:style=Regular:size=11:antialias=true:autohint=true",
-					"Ionicons:style=Regular:size=11:antialias=true:autohint=true"
 };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
@@ -127,6 +126,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("st -f 'Inconsolata Nerd Font:pixelsize=18.5:antialias=true:autohint=true' -e weechat") },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("pcmanfm") },
 	{ MODKEY,                       XK_z,      spawn,          SHCMD("st -e htop") },
+	{ MODKEY,                       XK_v,      spawn,          SHCMD("tvfzf") },
 	{ MODKEY|ControlMask,           XK_s,      spawn,          SHCMD("scrotpick") },
 	{ MODKEY|ShiftMask,             XK_Escape, spawn,          SHCMD("shutdown.sh") },
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("lgout") },
