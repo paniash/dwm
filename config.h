@@ -50,10 +50,6 @@ static Sp scratchpads[] = {
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-/* static const char *tags[] = { "1", "2", "3", "4", "5", "6" }; */
-/* static const char *tags[] = { "I", "II", "III", "IV", "V", "VI" }; */
-/* static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" }; */
-/* static const char *tags[] = { "一", "二", "三", "四", "五", "六" }; */
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -65,7 +61,7 @@ static const Rule rules[] = {
 	{ "discord",    NULL,     NULL,           1 << 8,         0,          0,           1,        -1 },
 	{ "Slack",    NULL,     NULL,           1 << 7,         0,          0,           1,        -1 },
 	{ "zoom",    NULL,     NULL,           1 << 6,         0,          0,           1,        -1 },
-	{ "st-256color",      NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ "termname",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "Matplotlib",     NULL,      NULL,       0,            1, 0, 1,           -1 },
 	{ "R_x11",          NULL,      NULL,       0,            1, 0, 1,           -1 },
 	{ "gnuplot_qt",     NULL,      NULL,       0,            1, 0, 1,           -1 },
@@ -118,12 +114,12 @@ static Key keys[] = {
 	{ MODKEY,           	        XK_b,	   togglescratch,  {.ui = 2 } },
 	{ MODKEY|Mod1Mask,				XK_Return, spawn,          SHCMD("st -g =140x54") },
 	{ MODKEY|ControlMask,           XK_c,      spawn,          SHCMD("qalculate-gtk") },
-	{ MODKEY,                       XK_w,      spawn,          SHCMD("firefox") },
+	{ MODKEY,                       XK_w,      spawn,          SHCMD("chromium") },
 	{ MODKEY,                       XK_n,      spawn,          SHCMD("st -e vifm ~/") },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("st -e newsboat") },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("buku-dmenu") },
-	{ MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("st -f 'Inconsolata Nerd Font:pixelsize=18.5:antialias=true:autohint=true' -e weechat") },
+	{ MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("st -f 'DejaVu Sans Mono:pixelsize=17:antialias=true:autohint=true' -e weechat") },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("pcmanfm") },
 	{ MODKEY,                       XK_z,      spawn,          SHCMD("st -e htop") },
 	{ MODKEY,                       XK_v,      spawn,          SHCMD("tvfzf") },
