@@ -114,7 +114,7 @@ static Key keys[] = {
 	{ MODKEY,           	        XK_b,	   togglescratch,  {.ui = 2 } },
 	{ MODKEY|Mod1Mask,				XK_Return, spawn,          SHCMD("st -g =140x54") },
 	{ MODKEY|ControlMask,           XK_c,      spawn,          SHCMD("qalculate-gtk") },
-	{ MODKEY,                       XK_w,      spawn,          SHCMD("chromium") },
+	{ MODKEY,                       XK_w,      spawn,          SHCMD("brave") },
 	{ MODKEY,                       XK_n,      spawn,          SHCMD("st -e vifm ~/") },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("st -e newsboat") },
