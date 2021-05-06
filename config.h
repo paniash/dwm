@@ -123,6 +123,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("pcmanfm") },
 	{ MODKEY,                       XK_z,      spawn,          SHCMD("st -e htop") },
 	{ MODKEY,                       XK_v,      spawn,          SHCMD("tvfzf") },
+	{ MODKEY,                       XK_a,      spawn,          SHCMD("dmenumusic") },
 	{ MODKEY|ControlMask,           XK_s,      spawn,          SHCMD("scrotpick") },
 	{ MODKEY|ShiftMask,             XK_Escape, spawn,          SHCMD("shutdown.sh") },
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("lgout") },
