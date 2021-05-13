@@ -119,7 +119,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_n,      spawn,          SHCMD("st -e vifm ~/") },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("st -e newsboat") },
-	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("buku-dmenu") },
+	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("bmks") },
 	{ MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("st -f 'DejaVu Sans Mono:pixelsize=17:antialias=true:autohint=true' -e weechat") },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("pcmanfm") },
 	{ MODKEY,                       XK_z,      spawn,          SHCMD("st -e htop") },
