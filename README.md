@@ -59,7 +59,6 @@ Currently I have the following patches installed,
 * Scratchpads - multiple scratchpads bound to various keys (just like i3wm!).
 * Pertag - maintain a layout per tag instead of per monitor (which is the default).
 * Noborder - removes borders when a window is present in monocle mode or only one window present in view.
-* Vanity gaps - adds inner, outer gaps that can be changed on the fly ~~(but works only in tiled layout, better than tilegap layout)~~ (new patch -> allows gaps in all layouts).
 * Push_no_master - moves windows up/down the stack but doesn't push to master, use zoom() instead.
 * Notitle - Removes the title section of windows from the statusbar (allows me to add more modules to dwmblocks).
 * Focusonactive - patch that for example when opening a url in one tag shifts focus to the tag where the browser is present.
@@ -73,7 +72,7 @@ Currently I have the following patches installed,
 
 ## To-do
 
-* ~~To add gaps (for aesthetics).~~
+* ~~To add gaps (for aesthetics).~~ Gaps removed since they provide no functional improvement.
 * ~~To implement moving individual windows along the stack manually.~~ Implemented in push_no_master patch.
 * ~~To implement true fullscreen.~~ Done in the fullscreen compilation patch.
 - ~~Implement resizing of stack windows (bspwm-like behaviour).~~ Best to come out of stack-resizing mentality persistent in manual tilers.
