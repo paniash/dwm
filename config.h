@@ -31,7 +31,7 @@ static const char col_cyan2[]       = "#007777";
 static const char col_cyan3[]       = "#006677";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray6, NULL },
+	[SchemeNorm] = { col_gray3, col_gray1, NULL },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_gray5 },
 };
 
@@ -68,7 +68,7 @@ static const Rule rules[] = {
 	{ "gnuplot_qt",     NULL,      NULL,       0,            1, 0, 1,           -1 },
 	{ "Qalculate-gtk",  NULL,      NULL,       0,            1, 0, 1,           -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
-	{ NULL,		  "spterm",		NULL,		SPTAG(0),		1, 0, 1,			 -1 },
+	{ NULL,		  "spterm",		NULL,		SPTAG(0),		1, 1, 0,			 -1 },
 	{ NULL,		  "spcalc",		NULL,		SPTAG(1),		1, 0, 1,			 -1 },
 	{ NULL,		  "spmusic",	NULL,		SPTAG(2),		1, 0, 1,			 -1 },
 };
