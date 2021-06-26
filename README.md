@@ -21,7 +21,7 @@ In order to build dwm, you need the Xlib header files and for the statusbar you'
 ## Installation
 
 Fire up a terminal and type the following commands:
-```shell
+```sh
 git clone https://github.com/paniash/dwm
 cd dwm
 sudo make clean install
@@ -39,7 +39,7 @@ the `/usr/share/xsessions` directory).
 dwm doesn't have a restart option by default so after compiling the build files, you'll have to log
 out and log back in which is a PITA. There are 2 patches on the website but I'd suggest to add
 the following line (mentioned on the suckless website) in your `.xinitrc` which is essentially, a while loop:
-```shell
+```sh
 #!/bin/sh
 
 while :; do
@@ -84,3 +84,16 @@ This build of dwm does not implement color emoji in the statusbar, so you must i
 ### Issues & Contributing
 
 If you're facing issues with this build, feel free to open an issue in the issue tracker and I'll try my best to resolve it. Feel free to suggest changes and open PRs as well. ;)
+
+# Citing
+
+```bib
+@article{d1971possibility,
+  title={Possibility of orienting electron spins with current},
+  author={D'Yakonov, Mikhail I and Perel, VI},
+  journal={Soviet Journal of Experimental and Theoretical Physics Letters},
+  volume={13},
+  pages={467},
+  year={1971}
+}
+```
