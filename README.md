@@ -84,16 +84,3 @@ This build of dwm does not implement color emoji in the statusbar, so you must i
 ### Issues & Contributing
 
 If you're facing issues with this build, feel free to open an issue in the issue tracker and I'll try my best to resolve it. Feel free to suggest changes and open PRs as well. ;)
-
-# Citing
-
-```bib
-@article{d1971possibility,
-  title={Possibility of orienting electron spins with current},
-  author={D'Yakonov, Mikhail I and Perel, VI},
-  journal={Soviet Journal of Experimental and Theoretical Physics Letters},
-  volume={13},
-  pages={467},
-  year={1971}
-}
-```
