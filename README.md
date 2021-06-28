@@ -84,7 +84,3 @@ This build of dwm does not implement color emoji in the statusbar, so you must i
 ### Issues & Contributing
 
 If you're facing issues with this build, feel free to open an issue in the issue tracker and I'll try my best to resolve it. Feel free to suggest changes and open PRs as well. ;)
-
-```cmake
-cmake -DENABLE_COMPLEX_X@=ON ..
-```
