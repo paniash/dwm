@@ -42,6 +42,10 @@
 #include <X11/Xft/Xft.h>
 #include <X11/Xlib-xcb.h>
 #include <xcb/res.h>
+#ifdef __OpenBSD__
+#include <sys/sysctl.h>
+#include <kvm.h>
+#endif /* __OpenBSD */
 
 #include "drw.h"
 #include "util.h"
@@ -117,8 +121,9 @@ struct Client {
 	int bw, oldbw;
 	unsigned int tags;
 	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen, isterminal, noswallow;
-    int fakefullscreen;
+	int ignorecfgreqpos, ignorecfgreqsize;
 	pid_t pid;
+    int fakefullscreen;
 	Client *next;
 	Client *snext;
 	Client *swallowing;
@@ -230,6 +235,7 @@ static void pushdown(const Arg *arg);
 static void pushup(const Arg *arg);
 static void quit(const Arg *arg);
 static Monitor *recttomon(int x, int y, int w, int h);
+static void replaceclient(Client *old, Client *new);
 static void removesystrayicon(Client *i);
 static void resetlayout(const Arg *arg);
 static void resize(Client *c, int x, int y, int w, int h, int interact);
@@ -291,6 +297,8 @@ static void zoom(const Arg *arg);
 
 static void focusmaster(const Arg *arg);
 
+static int swallow(Client *p, Client *c);
+static void unswallow(Client *c);
 static pid_t getparentprocess(pid_t p);
 static int isdescprocess(pid_t p, pid_t c);
 static Client *swallowingclient(Window w);
@@ -332,7 +340,6 @@ static Display *dpy;
 static Drw *drw;
 static Monitor *mons, *selmon;
 static Window root, wmcheckwin;
-
 static xcb_connection_t *xcon;
 
 /* configuration, allows nested code to access above variables */
@@ -490,53 +497,6 @@ attachstack(Client *c)
 {
 	c->snext = c->mon->stack;
 	c->mon->stack = c;
-}
-
-void
-swallow(Client *p, Client *c)
-{
-
-	if (c->noswallow || c->isterminal)
-		return;
-	if (c->noswallow && !swallowfloating && c->isfloating)
-		return;
-
-	detach(c);
-	detachstack(c);
-
-	setclientstate(c, WithdrawnState);
-	XUnmapWindow(dpy, p->win);
-
-	p->swallowing = c;
-	c->mon = p->mon;
-
-	Window w = p->win;
-	p->win = c->win;
-	c->win = w;
-	updatetitle(p);
-	XMoveResizeWindow(dpy, p->win, p->x, p->y, p->w, p->h);
-	arrange(p->mon);
-	configure(p);
-	updateclientlist();
-}
-
-void
-unswallow(Client *c)
-{
-	c->win = c->swallowing->win;
-
-	free(c->swallowing);
-	c->swallowing = NULL;
-
-	/* unfullscreen the client */
-	setfullscreen(c, 0);
-	updatetitle(c);
-	arrange(c->mon);
-	XMapWindow(dpy, c->win);
-	XMoveResizeWindow(dpy, c->win, c->x, c->y, c->w, c->h);
-	setclientstate(c, NormalState);
-	focus(NULL);
-	arrange(c->mon);
 }
 
 void
@@ -778,22 +738,29 @@ configurerequest(XEvent *e)
 		if (ev->value_mask & CWBorderWidth)
 			c->bw = ev->border_width;
 		else if (c->isfloating || !selmon->lt[selmon->sellt]->arrange) {
+			if (c->ignorecfgreqpos && c->ignorecfgreqsize)
+				return;
+
 			m = c->mon;
-			if (ev->value_mask & CWX) {
-				c->oldx = c->x;
-				c->x = m->mx + ev->x;
+			if (!c->ignorecfgreqpos) {
+				if (ev->value_mask & CWX) {
+					c->oldx = c->x;
+					c->x = m->mx + ev->x;
+				}
+				if (ev->value_mask & CWY) {
+					c->oldy = c->y;
+					c->y = m->my + ev->y;
+				}
 			}
-			if (ev->value_mask & CWY) {
-				c->oldy = c->y;
-				c->y = m->my + ev->y;
-			}
-			if (ev->value_mask & CWWidth) {
-				c->oldw = c->w;
-				c->w = ev->width;
-			}
-			if (ev->value_mask & CWHeight) {
-				c->oldh = c->h;
-				c->h = ev->height;
+			if (!c->ignorecfgreqsize) {
+				if (ev->value_mask & CWWidth) {
+					c->oldw = c->w;
+					c->w = ev->width;
+				}
+				if (ev->value_mask & CWHeight) {
+					c->oldh = c->h;
+					c->h = ev->height;
+				}
 			}
 			if ((c->x + c->w) > m->mx + m->mw && c->isfloating)
 				c->x = m->mx + (m->mw / 2 - WIDTH(c) / 2); /* center in x direction */
@@ -865,8 +832,8 @@ destroynotify(XEvent *e)
 		resizebarwin(selmon);
 		updatesystray();
 	}
-    else if ((c = swallowingclient(ev->window)))
-        unmanage(c->swallowing, 1);
+	else if ((c = swallowingclient(ev->window)))
+		unmanage(c->swallowing, 1);
 }
 
 void
@@ -1255,6 +1222,7 @@ manage(Window w, XWindowAttributes *wa)
 	Client *c, *t = NULL, *term = NULL;
 	Window trans = None;
 	XWindowChanges wc;
+	int focusclient = 1;
 
 	c = ecalloc(1, sizeof(Client));
 	c->win = w;
@@ -1305,20 +1273,35 @@ manage(Window w, XWindowAttributes *wa)
 		c->isfloating = c->oldstate = trans != None || c->isfixed;
 	if (c->isfloating)
 		XRaiseWindow(dpy, c->win);
-	attach(c);
-	attachstack(c);
+
+	/* Do not attach client if it is being swallowed */
+	if (term && swallow(term, c)) {
+		/* Do not let swallowed client steal focus unless the terminal has focus */
+		focusclient = (term == selmon->sel);
+	} else {
+		attach(c);
+
+		if (focusclient || !c->mon->sel || !c->mon->stack)
+			attachstack(c);
+		else {
+			c->snext = c->mon->sel->snext;
+			c->mon->sel->snext = c;
+		}
+	}
+
 	XChangeProperty(dpy, root, netatom[NetClientList], XA_WINDOW, 32, PropModeAppend,
 		(unsigned char *) &(c->win), 1);
 	XMoveResizeWindow(dpy, c->win, c->x + 2 * sw, c->y, c->w, c->h); /* some windows require this */
 	setclientstate(c, NormalState);
-	if (c->mon == selmon)
-		unfocus(selmon->sel, 0, c);
-	c->mon->sel = c;
+	if (focusclient) {
+		if (c->mon == selmon)
+			unfocus(selmon->sel, 0, c);
+		c->mon->sel = c;
+	}
 	arrange(c->mon);
 	XMapWindow(dpy, c->win);
-	if (term)
-		swallow(term, c);
-	focus(NULL);
+	if (focusclient)
+		focus(NULL);
 }
 
 void
@@ -1584,6 +1567,46 @@ resetlayout(const Arg *arg)
 {
 		Arg default_mfact = {.f = mfact + 1};
 		setmfact(&default_mfact);
+}
+
+void
+replaceclient(Client *old, Client *new)
+{
+	Client *c = NULL;
+	Monitor *mon = old->mon;
+
+	new->mon = mon;
+	new->tags = old->tags;
+	new->isfloating = old->isfloating;
+
+	new->next = old->next;
+	new->snext = old->snext;
+
+	if (old == mon->clients)
+		mon->clients = new;
+	else {
+		for (c = mon->clients; c && c->next != old; c = c->next);
+		c->next = new;
+	}
+
+	if (old == mon->stack)
+		mon->stack = new;
+	else {
+		for (c = mon->stack; c && c->snext != old; c = c->snext);
+		c->snext = new;
+	}
+
+	old->next = NULL;
+	old->snext = NULL;
+
+	XMoveWindow(dpy, old->win, WIDTH(old) * -2, old->y);
+
+	if (ISVISIBLE(new)) {
+		if (new->isfloating)
+			resize(new, old->x, old->y, new->w - 2*new->bw, new->h - 2*new->bw, 0);
+		else
+			resize(new, old->x, old->y, old->w - 2*new->bw, old->h - 2*new->bw, 0);
+	}
 }
 
 void
@@ -2095,6 +2118,28 @@ spawn(const Arg *arg)
 	}
 }
 
+int
+swallow(Client *t, Client *c)
+{
+	if (c->noswallow || c->isterminal)
+		return 0;
+	if (!swallowfloating && c->isfloating)
+		return 0;
+
+	replaceclient(t, c);
+	c->ignorecfgreqpos = 1;
+	c->swallowing = t;
+
+	return 1;
+}
+
+void
+unswallow(Client *c)
+{
+	replaceclient(c, c->swallowing);
+	c->swallowing = NULL;
+}
+
 void
 tag(const Arg *arg)
 {
@@ -2323,22 +2368,16 @@ unfocus(Client *c, int setfocus, Client *nextfocus)
 void
 unmanage(Client *c, int destroyed)
 {
+	Client *s;
 	Monitor *m = c->mon;
 	XWindowChanges wc;
 
-	if (c->swallowing) {
+	if (c->swallowing)
 		unswallow(c);
-		return;
-	}
 
-	Client *s = swallowingclient(c->win);
-	if (s) {
-		free(s->swallowing);
+	s = swallowingclient(c->win);
+	if (s)
 		s->swallowing = NULL;
-		arrange(m);
-		focus(NULL);
-		return;
-	}
 
 	detach(c);
 	detachstack(c);
@@ -2354,12 +2393,9 @@ unmanage(Client *c, int destroyed)
 		XUngrabServer(dpy);
 	}
 	free(c);
-
-	if (!s) {
-		arrange(m);
-		focus(NULL);
-		updateclientlist();
-	}
+	focus(NULL);
+	updateclientlist();
+	arrange(m);
 }
 
 void
@@ -2780,6 +2816,7 @@ winpid(Window w)
 {
 	pid_t result = 0;
 
+#ifdef __linux__
 	xcb_res_client_id_spec_t spec = {0};
 	spec.client = w;
 	spec.mask = XCB_RES_CLIENT_ID_MASK_LOCAL_CLIENT_PID;
@@ -2805,6 +2842,22 @@ winpid(Window w)
 
 	if (result == (pid_t)-1)
 		result = 0;
+#endif /* __linux__ */
+#ifdef __OpenBSD__
+	Atom type;
+	int format;
+	unsigned long len, bytes;
+	unsigned char *prop;
+	pid_t ret;
+
+	if (XGetWindowProperty(dpy, w, XInternAtom(dpy, "_NET_WM_PID", 0), 0, 1, False, AnyPropertyType, &type, &format, &len, &bytes, &prop) != Success || !prop)
+		return 0;
+
+	ret = *(pid_t*)prop;
+	XFree(prop);
+	result = ret;
+#endif /* __OpenBSD__ */
+
 	return result;
 }
 
@@ -2824,6 +2877,19 @@ getparentprocess(pid_t p)
 	fscanf(f, "%*u %*s %*c %u", &v);
 	fclose(f);
 #endif /* __linux__*/
+
+#ifdef __OpenBSD__
+	int n;
+	kvm_t *kd;
+	struct kinfo_proc *kp;
+
+	kd = kvm_openfiles(NULL, NULL, NULL, KVM_NO_FILES, NULL);
+	if (!kd)
+		return 0;
+
+	kp = kvm_getprocs(kd, KERN_PROC_PID, p, sizeof(*kp), &n);
+	v = kp->p_ppid;
+#endif /* __OpenBSD__ */
 
 	return (pid_t)v;
 }
@@ -2994,7 +3060,7 @@ main(int argc, char *argv[])
 	checkotherwm();
 	setup();
 #ifdef __OpenBSD__
-	if (pledge("stdio rpath proc exec", NULL) == -1)
+	if (pledge("stdio rpath proc exec ps", NULL) == -1)
 		die("pledge");
 #endif /* __OpenBSD__ */
 	scan();
