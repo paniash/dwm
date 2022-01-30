@@ -171,7 +171,7 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask|ShiftMask,    XK_8,      incrohgaps,     {.i = -1 } },
 	{ MODKEY|Mod1Mask,              XK_9,      incrovgaps,     {.i = +1 } },
 	{ MODKEY|Mod1Mask|ShiftMask,    XK_9,      incrovgaps,     {.i = -1 } },
-	{ MODKEY,                       XK_g,      togglegaps,     {0} },
+	{ MODKEY|ShiftMask,             XK_g,      togglegaps,     {0} },
 	{ MODKEY|Mod1Mask,              XK_0,      defaultgaps,    {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_l,      shiftviewclients,     {.i = +1 } },
@@ -180,7 +180,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,					    XK_e,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY|ShiftMask,             XK_g,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
 	/* { MODKEY,                       XK_space,  setlayout,      {0} }, */
 	{ MODKEY|ShiftMask,             XK_e,      togglefloating, {0} },
 	{ MODKEY,                       XK_f,      togglefullscreen,  {0} },
