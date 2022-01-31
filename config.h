@@ -80,6 +80,7 @@ static const Rule rules[] = {
 static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
@@ -128,6 +129,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("pcmanfm") },
 	{ MODKEY,                       XK_z,      spawn,          SHCMD("st -e htop") },
 	{ MODKEY,                       XK_v,      spawn,          SHCMD("tvfzf") },
+	{ MODKEY|ControlMask,			XK_l,      spawn,          SHCMD("betterlockscreen -l blur") },
 	// { MODKEY,                       XK_a,      spawn,          SHCMD("dmenumusic") },
 	// { MODKEY,                       XK_g,      spawn,          SHCMD("lofimusic") },
 	{ MODKEY|ControlMask,           XK_s,      spawn,          SHCMD("scrotpick") },
