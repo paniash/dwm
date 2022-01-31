@@ -931,7 +931,7 @@ drawbar(Monitor *m)
 		stw = getsystraywidth();
 
     if (!m->showbar)
-        return;
+		return;
 
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
