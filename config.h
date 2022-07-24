@@ -69,6 +69,8 @@ static const Rule rules[] = {
 	{ "Matplotlib",     NULL,      NULL,       0,            1, 0, 1,           -1 },
 	{ "R_x11",          NULL,      NULL,       0,            1, 0, 1,           -1 },
 	{ "gnuplot_qt",     NULL,      NULL,       0,            1, 0, 1,           -1 },
+	{ "Electron",     NULL,      NULL,       0,            1, 0, 1,           -1 },
+	{ "gksqt",     NULL,      NULL,       0,            1, 0, 1,           -1 },
 	{ "Qalculate-gtk",  NULL,      NULL,       0,            1, 0, 1,           -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 	{ NULL,		  "spterm",		NULL,		SPTAG(0),		1, 1, 0,			 -1 },
@@ -121,8 +123,9 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,				XK_Return, spawn,          SHCMD("st -g =140x54") },
 	{ MODKEY|ControlMask,           XK_c,      spawn,          SHCMD("qalculate-gtk") },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("firefox") },
+	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("chromium gmail.com") },
 	{ MODKEY,                       XK_n,      spawn,          SHCMD("emacs") },
-	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
+	// { MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("st -e newsboat") },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("bmks") },
 	{ MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("st -c applebee -f 'DejaVu Sans Mono:pixelsize=17:antialias=true:autohint=true' -e irssi") },
@@ -137,15 +140,18 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("lgout") },
 
 	// Media keys
-	{ 0,                       XF86XK_AudioMute,             spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+10 dwmblocks") },
+	/* { 0,                       XF86XK_AudioMute,             spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+10 dwmblocks") },
 	{ 0,                       XF86XK_AudioRaiseVolume,      spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%; pkill -RTMIN+10 dwmblocks") },
-	{ 0,                       XF86XK_AudioLowerVolume,      spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%; pkill -RTMIN+10 dwmblocks") },
+	{ 0,                       XF86XK_AudioLowerVolume,      spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%; pkill -RTMIN+10 dwmblocks") }, */
+	{ 0,                       XF86XK_AudioMute,             spawn,          SHCMD("pamixer --toggle-mute; pkill -RTMIN+10 dwmblocks") },
+	{ 0,                       XF86XK_AudioRaiseVolume,      spawn,          SHCMD("pamixer --allow-boost --increase 5; pkill -RTMIN+10 dwmblocks") },
+	{ 0,                       XF86XK_AudioLowerVolume,      spawn,          SHCMD("pamixer --allow-boost --decrease 5; pkill -RTMIN+10 dwmblocks") },
 	{ 0,                       XF86XK_AudioPlay,             spawn,          SHCMD("mpc toggle; pkill -RTMIN+11 dwmblocks") },
 	{ 0,                       XF86XK_AudioNext,     	     spawn,          SHCMD("mpc next; pkill -RTMIN+11 dwmblocks") },
 	{ 0,                       XF86XK_AudioPrev,     	     spawn,          SHCMD("mpc prev; pkill -RTMIN+11 dwmblocks") },
 	{ MODKEY,                  XK_semicolon, 	    	     spawn,          SHCMD("mpc shuffle; notify-send 'Music Player Daemon' 'Queue shuffled!'") },
-	{ 0,                       XF86XK_MonBrightnessUp,       spawn,          SHCMD("xbacklight -inc 5; pkill -RTMIN+9 dwmblocks") },
-	{ 0,                       XF86XK_MonBrightnessDown,     spawn,          SHCMD("xbacklight -dec 5; pkill -RTMIN+9 dwmblocks") },
+	{ 0,                       XF86XK_MonBrightnessUp,       spawn,          SHCMD("xbacklight -inc 5; pkill -RTMIN+19 dwmblocks") },
+	{ 0,                       XF86XK_MonBrightnessDown,     spawn,          SHCMD("xbacklight -dec 5; pkill -RTMIN+19 dwmblocks") },
 
 
 	/* { MODKEY,                       XK_y,      togglebar,      {0} }, */
