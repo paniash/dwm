@@ -125,7 +125,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("firefox") },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("chromium gmail.com") },
 	{ MODKEY,                       XK_n,      spawn,          SHCMD("emacs") },
-	// { MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("st -e newsboat") },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("bmks") },
 	{ MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("st -c applebee -f 'DejaVu Sans Mono:pixelsize=17:antialias=true:autohint=true' -e irssi") },
@@ -143,15 +142,15 @@ static Key keys[] = {
 	/* { 0,                       XF86XK_AudioMute,             spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+10 dwmblocks") },
 	{ 0,                       XF86XK_AudioRaiseVolume,      spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%; pkill -RTMIN+10 dwmblocks") },
 	{ 0,                       XF86XK_AudioLowerVolume,      spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%; pkill -RTMIN+10 dwmblocks") }, */
-	{ 0,                       XF86XK_AudioMute,             spawn,          SHCMD("pamixer --toggle-mute; pkill -RTMIN+10 dwmblocks") },
-	{ 0,                       XF86XK_AudioRaiseVolume,      spawn,          SHCMD("pamixer --allow-boost --increase 5; pkill -RTMIN+10 dwmblocks") },
-	{ 0,                       XF86XK_AudioLowerVolume,      spawn,          SHCMD("pamixer --allow-boost --decrease 5; pkill -RTMIN+10 dwmblocks") },
-	{ 0,                       XF86XK_AudioPlay,             spawn,          SHCMD("mpc toggle; pkill -RTMIN+11 dwmblocks") },
-	{ 0,                       XF86XK_AudioNext,     	     spawn,          SHCMD("mpc next; pkill -RTMIN+11 dwmblocks") },
-	{ 0,                       XF86XK_AudioPrev,     	     spawn,          SHCMD("mpc prev; pkill -RTMIN+11 dwmblocks") },
+	{ 0,                       XF86XK_AudioMute,             spawn,          SHCMD("pamixer --toggle-mute; kill -44 $(pidof dwmblocks)") },
+	{ 0,                       XF86XK_AudioRaiseVolume,      spawn,          SHCMD("pamixer --allow-boost --increase 5; kill -44 $(pidof dwmblocks)") },
+	{ 0,                       XF86XK_AudioLowerVolume,      spawn,          SHCMD("pamixer --allow-boost --decrease 5; kill -44 $(pidof dwmblocks)") },
+	{ 0,                       XF86XK_AudioPlay,             spawn,          SHCMD("mpc toggle; kill -45 $(pidof dwmblocks)") },
+	{ 0,                       XF86XK_AudioNext,     	     spawn,          SHCMD("mpc next; kill -45 $(pidof dwmblocks)") },
+	{ 0,                       XF86XK_AudioPrev,     	     spawn,          SHCMD("mpc prev; kill -45 $(pidof dwmblocks)") },
 	{ MODKEY,                  XK_semicolon, 	    	     spawn,          SHCMD("mpc shuffle; notify-send 'Music Player Daemon' 'Queue shuffled!'") },
-	{ 0,                       XF86XK_MonBrightnessUp,       spawn,          SHCMD("xbacklight -inc 5; pkill -RTMIN+19 dwmblocks") },
-	{ 0,                       XF86XK_MonBrightnessDown,     spawn,          SHCMD("xbacklight -dec 5; pkill -RTMIN+19 dwmblocks") },
+	{ 0,                       XF86XK_MonBrightnessUp,       spawn,          SHCMD("xbacklight -inc 5; kill -53 $(pidof dwmblocks)") },
+	{ 0,                       XF86XK_MonBrightnessDown,     spawn,          SHCMD("xbacklight -dec 5; kill -53 $(pidof dwmblocks)") },
 
 
 	/* { MODKEY,                       XK_y,      togglebar,      {0} }, */
