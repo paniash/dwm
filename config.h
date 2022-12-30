@@ -1,12 +1,12 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2.0;        /* border pixel of windows */
+static const unsigned int borderpx  = 1.5;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int gappih    = 0;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 0;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 0;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 0;       /* vert outer gap between windows and screen edge */
+static const unsigned int gappih    = 5;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 5;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
@@ -72,6 +72,7 @@ static const Rule rules[] = {
 	{ "Electron",     NULL,      NULL,       0,            1, 0, 1,           -1 },
 	{ "gksqt",     NULL,      NULL,       0,            1, 0, 1,           -1 },
 	{ "Qalculate-gtk",  NULL,      NULL,       0,            1, 0, 1,           -1 },
+	{ "org.gnome.SoundRecorder",  NULL,      NULL,       0,            1, 0, 1,           -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 	{ NULL,		  "spterm",		NULL,		SPTAG(0),		1, 1, 0,			 -1 },
 	{ NULL,		  "spcalc",		NULL,		SPTAG(1),		1, 0, 1,			 -1 },
@@ -123,7 +124,7 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,				XK_Return, spawn,          SHCMD("st -g =140x54") },
 	{ MODKEY|ControlMask,           XK_c,      spawn,          SHCMD("qalculate-gtk") },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("firefox") },
-	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("chromium gmail.com") },
+	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("firefox gmail.com") },
 	{ MODKEY,                       XK_n,      spawn,          SHCMD("emacs") },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("st -e newsboat") },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("bmks") },
