@@ -41,7 +41,7 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34+460-200", NULL };
 const char *spcmd2[] = {"st", "-n", "spcalc", "-g", "50x20", "-e", "bc", "-lq", NULL };
-const char *spcmd3[] = {"st", "-n", "spmusic", "-g", "120x34+520-200", "-e", "ncmpcpp", NULL };
+const char *spcmd3[] = {"st", "-n", "spmusic", "-g", "120x34+520-200", "-e", "gomp", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
@@ -146,9 +146,12 @@ static Key keys[] = {
 	{ 0,                       XF86XK_AudioMute,             spawn,          SHCMD("pamixer --toggle-mute; kill -44 $(pidof dwmblocks)") },
 	{ 0,                       XF86XK_AudioRaiseVolume,      spawn,          SHCMD("pamixer --allow-boost --increase 5; kill -44 $(pidof dwmblocks)") },
 	{ 0,                       XF86XK_AudioLowerVolume,      spawn,          SHCMD("pamixer --allow-boost --decrease 5; kill -44 $(pidof dwmblocks)") },
-	{ 0,                       XF86XK_AudioPlay,             spawn,          SHCMD("mpc toggle; kill -45 $(pidof dwmblocks)") },
+	/* { 0,                       XF86XK_AudioPlay,             spawn,          SHCMD("mpc toggle; kill -45 $(pidof dwmblocks)") },
 	{ 0,                       XF86XK_AudioNext,     	     spawn,          SHCMD("mpc next; kill -45 $(pidof dwmblocks)") },
-	{ 0,                       XF86XK_AudioPrev,     	     spawn,          SHCMD("mpc prev; kill -45 $(pidof dwmblocks)") },
+	{ 0,                       XF86XK_AudioPrev,     	     spawn,          SHCMD("mpc prev; kill -45 $(pidof dwmblocks)") }, */
+	{ 0,                       XF86XK_AudioPlay,             spawn,          SHCMD("playerctl play-pause") },
+	{ 0,                       XF86XK_AudioNext,     	     spawn,          SHCMD("playerctl next") },
+	{ 0,                       XF86XK_AudioPrev,     	     spawn,          SHCMD("playerctl previous") },
 	{ MODKEY,                  XK_semicolon, 	    	     spawn,          SHCMD("mpc shuffle; notify-send 'Music Player Daemon' 'Queue shuffled!'") },
 	{ 0,                       XF86XK_MonBrightnessUp,       spawn,          SHCMD("xbacklight -inc 5; kill -53 $(pidof dwmblocks)") },
 	{ 0,                       XF86XK_MonBrightnessDown,     spawn,          SHCMD("xbacklight -dec 5; kill -53 $(pidof dwmblocks)") },
