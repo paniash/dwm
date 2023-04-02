@@ -15,8 +15,8 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Terminus (TTF):style=Medium:size=15",  // Stable: JetBrains Mono:size=12 ; Japanese: IPAGothic:style=Regular, Noto Sans CJK JP:size=10
-					"FontAwesome:style=Regular:size=11:antialias=true:autohint=true",
+static const char *fonts[]          = { "xos4 Terminus:style=Regular:size=15",  // Stable: JetBrains Mono:size=12 ; Japanese: IPAGothic:style=Regular, Noto Sans CJK JP:size=10
+					"FontAwesome:style=Regular:size=14:antialias=true:autohint=true",
 };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
@@ -62,8 +62,8 @@ static const Rule rules[] = {
 	{ "Gimp",    NULL,     NULL,           1 << 4,         0,          0,           1,        -1 },
 	{ "applebee",    NULL,     NULL,           1 << 7,         0,          0,           1,        -1 },
 	{ "discord",    NULL,     NULL,           1 << 8,         0,          0,           1,        -1 },
-	{ "Zotero",    NULL,     NULL,           1 << 8,         0,          0,           1,        -1 },
-	{ "Spotify",    NULL,     NULL,           1 << 7,         0,          0,           1,        -1 },
+	{ "Zotero",    NULL,     NULL,           1 << 4,         0,          0,           1,        -1 },
+	{ "Spotify",    NULL,     NULL,           1 << 8,         0,          0,           1,        -1 },
 	{ "Element",    NULL,     NULL,           1 << 8,         0,          0,           1,        -1 },
 	{ "Slack",    NULL,     NULL,           1 << 7,         0,          0,           1,        -1 },
 	{ "zoom",    NULL,     NULL,           1 << 6,         1,          0,           1,        -1 },
@@ -133,14 +133,14 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("bmks") },
 	// { MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("st -c applebee -f 'DejaVu Sans Mono:pixelsize=17:antialias=true:autohint=true' -e irssi") },
 	{ MODKEY|ControlMask,           XK_m,      spawn,          SHCMD("external-monitor-notify") },
-	{ MODKEY,                       XK_p,      spawn,          SHCMD("pcmanfm") },
+	{ MODKEY,                       XK_p,      spawn,          SHCMD("thunar") },
 	{ MODKEY,                       XK_z,      spawn,          SHCMD("st -e htop") },
 	{ MODKEY,                       XK_v,      spawn,          SHCMD("tvfzf") },
 	{ MODKEY|ControlMask,			XK_l,      spawn,          SHCMD("betterlockscreen -l blur") },
 	// { MODKEY,                       XK_a,      spawn,          SHCMD("dmenumusic") },
 	// { MODKEY,                       XK_g,      spawn,          SHCMD("lofimusic") },
-	{ MODKEY|ControlMask,           XK_s,      spawn,          SHCMD("scrotpick") },
-	{ MODKEY|ShiftMask,             XK_Escape, spawn,          SHCMD("shutdown.sh") },
+	{ MODKEY|ControlMask,           XK_s,      spawn,          SHCMD("maimpick") },
+	{ MODKEY|ShiftMask,             XK_Escape, spawn,          SHCMD("turnoff") },
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("lgout") },
 
 	// Media keys
@@ -157,8 +157,10 @@ static Key keys[] = {
 	{ 0,                       XF86XK_AudioNext,     	     spawn,          SHCMD("playerctl next") },
 	{ 0,                       XF86XK_AudioPrev,     	     spawn,          SHCMD("playerctl previous") },
 	{ MODKEY,                  XK_semicolon, 	    	     spawn,          SHCMD("mpc shuffle; notify-send 'Music Player Daemon' 'Queue shuffled!'") },
-	{ 0,                       XF86XK_MonBrightnessUp,       spawn,          SHCMD("xbacklight -inc 5; kill -53 $(pidof dwmblocks)") },
-	{ 0,                       XF86XK_MonBrightnessDown,     spawn,          SHCMD("xbacklight -dec 5; kill -53 $(pidof dwmblocks)") },
+	/* { 0,                       XF86XK_MonBrightnessUp,       spawn,          SHCMD("xbacklight -inc 5; kill -53 $(pidof dwmblocks)") },
+	{ 0,                       XF86XK_MonBrightnessDown,     spawn,          SHCMD("xbacklight -dec 5; kill -53 $(pidof dwmblocks)") }, */
+	{ 0,                       XF86XK_MonBrightnessUp,       spawn,          SHCMD("light -A 5; kill -53 $(pidof dwmblocks)") },
+	{ 0,                       XF86XK_MonBrightnessDown,     spawn,          SHCMD("light -U 5; kill -53 $(pidof dwmblocks)") },
 
 
 	/* { MODKEY,                       XK_y,      togglebar,      {0} }, */
