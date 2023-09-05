@@ -51,7 +51,7 @@ static Sp scratchpads[] = {
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-/* static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" }; */
+// static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -118,7 +118,7 @@ static const char *termcmd[]  = { "st", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	// Spawn keybindings
-	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
+	{ MODKEY,                       XK_p,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ControlMask,  	        XK_Return, togglescratch,  {.ui = 0 } },
 	{ MODKEY,           	        XK_c,	   togglescratch,  {.ui = 1 } },
@@ -126,7 +126,7 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,				XK_Return, spawn,          SHCMD("st -g =140x54") },
 	{ MODKEY|ControlMask,           XK_c,      spawn,          SHCMD("qalculate-gtk") },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("firefox") },
-	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("chromium gmail.com") },
+	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("firefox gmail.com") },
 	{ MODKEY|ShiftMask,             XK_o,      spawn,          SHCMD("emacs -f notmuch") },
 	{ MODKEY,                       XK_n,      spawn,          SHCMD("emacs") },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("firefox mail.proton.me/u/0/inbox") },
@@ -134,7 +134,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("bmks") },
 	// { MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("st -c applebee -f 'DejaVu Sans Mono:pixelsize=17:antialias=true:autohint=true' -e irssi") },
 	{ MODKEY|ControlMask,           XK_m,      spawn,          SHCMD("external-monitor-notify") },
-	{ MODKEY,                       XK_p,      spawn,          SHCMD("thunar") },
+	{ MODKEY,                       XK_d,      spawn,          SHCMD("thunar") },
 	{ MODKEY,                       XK_z,      spawn,          SHCMD("st -e htop") },
 	{ MODKEY,                       XK_v,      spawn,          SHCMD("tvfzf") },
 	{ MODKEY|ControlMask,			XK_l,      spawn,          SHCMD("betterlockscreen -l blur") },
