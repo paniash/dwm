@@ -41,7 +41,7 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34+460-200", NULL };
 const char *spcmd2[] = {"st", "-n", "spcalc", "-g", "50x20", "-e", "bc", "-lq", NULL };
-const char *spcmd3[] = {"st", "-n", "spmusic", "-g", "120x34+520-200", "-e", "ncmpcpp", NULL };
+const char *spcmd3[] = {"st", "-n", "spmusic", "-g", "120x34+520-200", "-e", "cmus", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
@@ -125,23 +125,23 @@ static Key keys[] = {
 	{ MODKEY,           	        XK_b,	   togglescratch,  {.ui = 2 } },
 	{ MODKEY|Mod1Mask,				XK_Return, spawn,          SHCMD("st -g =140x54") },
 	{ MODKEY|ControlMask,           XK_c,      spawn,          SHCMD("qalculate-gtk") },
-	{ MODKEY,                       XK_w,      spawn,          SHCMD("firefox") },
-	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("firefox gmail.com") },
+	{ MODKEY,                       XK_w,      spawn,          SHCMD("librewolf") },
+	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("librewolf gmail.com") },
 	{ MODKEY|ShiftMask,             XK_o,      spawn,          SHCMD("emacs -f notmuch") },
 	{ MODKEY,                       XK_n,      spawn,          SHCMD("emacs") },
-	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("firefox mail.proton.me/u/0/inbox") },
-	{ MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("st -e newsboat") },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("librewolf mail.proton.me/u/0/inbox") },
+	{ MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("st -f 'Hack:pixelsize=17:antialias=true:autohint=true' -e newsboat") },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("bmks") },
 	// { MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("st -c applebee -f 'DejaVu Sans Mono:pixelsize=17:antialias=true:autohint=true' -e irssi") },
 	{ MODKEY|ControlMask,           XK_m,      spawn,          SHCMD("external-monitor-notify") },
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("thunar") },
 	{ MODKEY,                       XK_z,      spawn,          SHCMD("st -e htop") },
 	{ MODKEY,                       XK_v,      spawn,          SHCMD("tvfzf") },
-	{ MODKEY|ControlMask,			XK_l,      spawn,          SHCMD("betterlockscreen -l blur") },
+	{ MODKEY|ControlMask,			XK_l,      spawn,          SHCMD("betterlockscreen -l dimblur") },
 	// { MODKEY,                       XK_a,      spawn,          SHCMD("dmenumusic") },
 	// { MODKEY,                       XK_g,      spawn,          SHCMD("lofimusic") },
 	{ MODKEY|ControlMask,           XK_s,      spawn,          SHCMD("maimpick") },
-	{ MODKEY|ShiftMask,             XK_Escape, spawn,          SHCMD("turnoff") },
+	{ MODKEY|ShiftMask,             XK_Escape, spawn,          SHCMD("downshut") },
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("lgout") },
 
 	// Media keys
@@ -154,14 +154,17 @@ static Key keys[] = {
 	/* { 0,                       XF86XK_AudioPlay,             spawn,          SHCMD("mpc toggle; kill -45 $(pidof dwmblocks)") },
 	{ 0,                       XF86XK_AudioNext,     	     spawn,          SHCMD("mpc next; kill -45 $(pidof dwmblocks)") },
 	{ 0,                       XF86XK_AudioPrev,     	     spawn,          SHCMD("mpc prev; kill -45 $(pidof dwmblocks)") }, */
-	{ 0,                       XF86XK_AudioPlay,             spawn,          SHCMD("playerctl play-pause") },
+	/* { 0,                       XF86XK_AudioPlay,             spawn,          SHCMD("playerctl play-pause") },
 	{ 0,                       XF86XK_AudioNext,     	     spawn,          SHCMD("playerctl next") },
-	{ 0,                       XF86XK_AudioPrev,     	     spawn,          SHCMD("playerctl previous") },
-	{ MODKEY,                  XK_semicolon, 	    	     spawn,          SHCMD("mpc shuffle; notify-send 'Music Player Daemon' 'Queue shuffled!'") },
+	{ 0,                       XF86XK_AudioPrev,     	     spawn,          SHCMD("playerctl previous") }, */
+	// { MODKEY,                  XK_semicolon, 	    	     spawn,          SHCMD("mpc shuffle; notify-send 'Music Player Daemon' 'Queue shuffled!'") },
 	/* { 0,                       XF86XK_MonBrightnessUp,       spawn,          SHCMD("xbacklight -inc 5; kill -53 $(pidof dwmblocks)") },
 	{ 0,                       XF86XK_MonBrightnessDown,     spawn,          SHCMD("xbacklight -dec 5; kill -53 $(pidof dwmblocks)") }, */
 	{ 0,                       XF86XK_MonBrightnessUp,       spawn,          SHCMD("light -A 5; kill -53 $(pidof dwmblocks)") },
 	{ 0,                       XF86XK_MonBrightnessDown,     spawn,          SHCMD("light -U 5; kill -53 $(pidof dwmblocks)") },
+	/* { 0,					   XF86XK_Messenger,						 spawn,          SHCMD("playerctl play-pause") },
+	{ 0,                       XF86XK_Excel,					 spawn,          SHCMD("playerctl next") },
+	{ 0,                       XF86XK_Go,					 spawn,          SHCMD("playerctl previous") }, */
 
 
 	/* { MODKEY,                       XK_y,      togglebar,      {0} }, */
